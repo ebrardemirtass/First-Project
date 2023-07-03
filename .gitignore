@@ -1,32 +1,21 @@
-# Prerequisites
-*.d
+# Binaries
+[Bb]in/
+[Oo]bj/
 
-# Compiled Object files
-*.slo
-*.lo
-*.o
-*.obj
+# Visual Studio files
+*.user
+*.suo
+*.cache
+*.sln.docstates
 
-# Precompiled Headers
-*.gch
-*.pch
+# ReSharper files
+_ReSharper*/
+*.[Rr]e[Ss]harper
+*.DotSettings.user
 
-# Compiled Dynamic libraries
-*.so
-*.dylib
-*.dll
-
-# Fortran module files
-*.mod
-*.smod
-
-# Compiled Static libraries
-*.lai
-*.la
-*.a
-*.lib
-
-# Executables
-*.exe
-*.out
-*.app
+# Build results
+[Dd]ebug/
+[Rr]elease/
+x64/
+x86/
+Any CPU/
