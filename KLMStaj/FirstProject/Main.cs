@@ -13,4 +13,4 @@ sonuc = int.TryParse(sayi, out a);
 if(sonuc)
     Console.WriteLine("Girdiğiniz Sayi: " + sayi);
 else
-    Console.WriteLine("Programi Duzgun Kullanin ! ");
+    Console.WriteLine("Sadece rakamlardan oluşan bir veri giriniz");
