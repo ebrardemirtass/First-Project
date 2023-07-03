@@ -15,6 +15,6 @@ if (!res)
 int i = 0;
 while( i < number2)
     {
-    Console.WriteLine("Girdiğiniz Sayi: " + number);
+    Console.WriteLine($"Girdiğiniz Sayı: {number}");
     i++;
 }
