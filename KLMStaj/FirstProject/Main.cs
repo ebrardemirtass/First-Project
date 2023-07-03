@@ -1,9 +1,9 @@
 Console.WriteLine("Sayı Giriniz:");
-bool sonuc;
-int a;
-string sayi= Console.ReadLine();
-sonuc = int.TryParse(sayi, out a);
-if(sonuc)
-    Console.WriteLine("Girdiğiniz Sayi: " + a);
+bool res;
+int number;
+string numberText= Console.ReadLine();
+res = int.TryParse(numberText, out number);
+if(res)
+    Console.WriteLine("Girdiğiniz Sayi: " + number);
 else
     Console.WriteLine("Sadece rakamlardan oluşan bir veri giriniz");
