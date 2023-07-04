@@ -1,3 +1,17 @@
+int ModeNumber;
+Console.WriteLine("Çalışma Modu Seçimi İçin");
+GetValidNumber(out ModeNumber);
+
+switch (ModeNumber)
+{
+    case 0:
+        Console.WriteLine("Normal Mod Seçilmiştir");
+        break;
+    default:
+        Console.WriteLine("Henüz bu mod geliştirilmemiştir.");
+        break;
+}
+
 int enteredNumber;
 int loopCount;
 
@@ -11,7 +25,7 @@ for (int i = 0; i < loopCount; i++)
 
 void GetValidNumber(out int number)
 {
-    string? enteredText;
+    string? enteredText; // nullable
 
     // Firstly, trying to get valid number
     do
@@ -27,5 +41,5 @@ void GetValidNumber(out int number)
             break;
         }
     }
-    while (!enteredText.Equals("EXIT"));
+    while (!enteredText.Equals("EXIT")); //string string karşılaştırması bütük küçük harf duyarlı
 }
