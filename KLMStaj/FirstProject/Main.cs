@@ -1,33 +1,31 @@
-bool res;
-int number = 1;
-int number2 = 1;
-int i = 0;
-string numberText = "";
-string numberText2 = "";
+int enteredNumber;
+int loopCount;
 
-while (!(numberText == "0" || numberText2 == "0" || numberText == "EXIT" || numberText2 == "EXIT"))
+GetValidNumber(out enteredNumber);
+GetValidNumber(out loopCount);
+
+for (int i = 0; i < loopCount; i++)
 {
-    Console.WriteLine("Sayı Giriniz:");
-    numberText = Console.ReadLine();
+    Console.WriteLine($"Girdiğiniz Sayı: {enteredNumber}");
+}
 
-    res = int.TryParse(numberText, out number);
-    if (!res)
+void GetValidNumber(out int number)
+{
+    string? enteredText;
+
+    // Firstly, trying to get valid number
+    do
     {
-        Console.WriteLine("Sadece rakamlardan oluşan bir veri giriniz");
+        Console.Write("Sayı Giriniz : ");
+        enteredText = Console.ReadLine();
+        if (!int.TryParse(enteredText, out number))
+        {
+            Console.WriteLine("Sadece rakamlardan oluşan bir veri giriniz");
+        }
+        else
+        {
+            break;
+        }
     }
-
-    Console.WriteLine("Loop Tekrar Sayısını Giriniz:");
-    numberText2 = Console.ReadLine();
-
-    res = int.TryParse(numberText2, out number2);
-    if (!res)
-    {
-        Console.WriteLine("Sadece rakamlardan oluşan bir veri giriniz");
-    }
-
-    while (i < number2)
-    {
-        Console.WriteLine($"Girdiğiniz Sayı: {number}");
-        i++;
-    }
+    while (!enteredText.Equals("EXIT"));
 }
