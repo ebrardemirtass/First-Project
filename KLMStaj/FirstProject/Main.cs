@@ -19,6 +19,9 @@ switch (ModeNumber)
         }
 
         break;
+    case 1:
+        PrintStars(default(int));
+        break;
     default:
         Console.WriteLine("Henüz bu mod geliştirilmemiştir.");
         break;
@@ -43,4 +46,13 @@ void GetValidNumber(out int number)
         }
     }
     while (!enteredText.Equals("EXIT")); //string string karşılaştırması bütük küçük harf duyarlı
+}
+
+
+/// <summary>
+/// This method should print star stairs
+/// </summary>
+void PrintStars(int starCount)
+{
+
 }
