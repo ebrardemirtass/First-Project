@@ -54,5 +54,16 @@ void GetValidNumber(out int number)
 /// </summary>
 void PrintStars(int starCount)
 {
+    Console.WriteLine("Yıldız Basamağı İçin");
+    GetValidNumber(out starCount);
+
+    for (int i = 0; i <= starCount; i++) 
+    {
+        for (int j = 0; j < i; j++) 
+        {
+            Console.Write(" * ");
+        }
+        Console.WriteLine();
+    }
 
 }
