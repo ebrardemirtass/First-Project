@@ -6,21 +6,22 @@ switch (ModeNumber)
 {
     case 0:
         Console.WriteLine("Normal Mod Seçilmiştir");
+
+        int enteredNumber;
+        int loopCount;
+
+        GetValidNumber(out enteredNumber);
+        GetValidNumber(out loopCount);
+
+        for (int i = 0; i < loopCount; i++)
+        {
+            Console.WriteLine($"Girdiğiniz Sayı: {enteredNumber}");
+        }
+
         break;
     default:
         Console.WriteLine("Henüz bu mod geliştirilmemiştir.");
         break;
-}
-
-int enteredNumber;
-int loopCount;
-
-GetValidNumber(out enteredNumber);
-GetValidNumber(out loopCount);
-
-for (int i = 0; i < loopCount; i++)
-{
-    Console.WriteLine($"Girdiğiniz Sayı: {enteredNumber}");
 }
 
 void GetValidNumber(out int number)
