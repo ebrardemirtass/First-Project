@@ -1,8 +1,8 @@
-int ModeNumber;
+int modeNumber;
 Console.WriteLine("Çalışma Modu Seçimi İçin");
-GetValidNumber(out ModeNumber);
+GetValidNumber(out modeNumber);
 
-switch (ModeNumber)
+switch (modeNumber)
 {
     case 0:
         Console.WriteLine("Normal Mod Seçilmiştir");
