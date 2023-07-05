@@ -1,9 +1,5 @@
 ﻿namespace UtilityProject
 {
-    public class DateTimeHelper
-    {
-
-    }
     public class DataTypesExample
     {
         public bool MyBool { get; set; }
