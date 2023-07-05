@@ -1,4 +1,4 @@
-int ModeNumber; namespace UtilityProject
+namespace UtilityProject
 {
 
     public class DataTypesExample
