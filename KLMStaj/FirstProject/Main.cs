@@ -62,23 +62,33 @@ void PrintStars()
     Console.WriteLine("Yıldız Basamağı İçin");
     GetValidNumber(out starCount);
 
-    for (int i = 0; i <= starCount; i++) 
+    for (int i = 0; i <= starCount; i++)
     {
-        for (int j = 0; j < i; j++) 
+        for (int j = 0; j < i; j++)
         {
             Console.Write(" * ");
         }
         Console.WriteLine();
     }
 }
+
+/// <summary>
+/// This method should print multiples of three up to the entered number
+/// </summary>
 void DivideByThree()
 {
     int limit;
+    List<int> numbers = new List<int>();
     Console.WriteLine("Kaça kadar bölünecek ?");
     GetValidNumber(out limit);
-    for (int i = 0; i <= limit; i++)
+    for (int i = 1; i <= limit; i++)
     {
         if (i % 3 == 0)
+        {
             Console.WriteLine(i);
+            numbers.Add(i);
+        }
     }
+    int count = numbers.Count();
+    Console.WriteLine($"Girdiğiniz {limit} sayısına kadar 3 e bölünen toplam {count} sayı bulunmaktadır.");
 }
