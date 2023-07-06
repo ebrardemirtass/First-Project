@@ -1,6 +1,8 @@
+using FirstProject;
+
 int modeNumber;
 Console.WriteLine("Çalışma Modu Seçimi İçin");
-GetValidNumber(out modeNumber);
+MainHelper.GetValidNumber(out modeNumber);
 
 switch (modeNumber)
 {
@@ -17,35 +19,13 @@ switch (modeNumber)
         Console.WriteLine("Henüz bu mod geliştirilmemiştir.");
         break;
 }
-
-void GetValidNumber(out int number)
-{
-    string? enteredText; // nullable
-
-    // Firstly, trying to get valid number
-    do
-    {
-        Console.Write("Sayı Giriniz : ");
-        enteredText = Console.ReadLine();
-        if (!int.TryParse(enteredText, out number))
-        {
-            Console.WriteLine("Sadece rakamlardan oluşan bir veri giriniz");
-        }
-        else
-        {
-            break;
-        }
-    }
-    while (!enteredText.Equals("EXIT")); //string string karşılaştırması bütük küçük harf duyarlı
-}
-
 void CustomAlgorithm()
 {
     int enteredNumber;
     int loopCount;
 
-    GetValidNumber(out enteredNumber);
-    GetValidNumber(out loopCount);
+    MainHelper.GetValidNumber(out enteredNumber);
+    MainHelper.GetValidNumber(out loopCount);
 
     for (int i = 0; i < loopCount; i++)
     {
@@ -60,7 +40,7 @@ void PrintStars()
 {
     int starCount;
     Console.WriteLine("Yıldız Basamağı İçin");
-    GetValidNumber(out starCount);
+    MainHelper.GetValidNumber(out starCount);
 
     for (int i = 0; i <= starCount; i++)
     {
@@ -80,7 +60,7 @@ void DivideByThree()
     int limit;
     List<int> numbers = new List<int>();
     Console.WriteLine("Kaça kadar bölünecek ?");
-    GetValidNumber(out limit);
+    MainHelper.GetValidNumber(out limit);
     for (int i = 1; i <= limit; i++)
     {
         if (i % 3 == 0)
