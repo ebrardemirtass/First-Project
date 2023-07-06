@@ -5,22 +5,10 @@ GetValidNumber(out modeNumber);
 switch (modeNumber)
 {
     case 0:
-        Console.WriteLine("Normal Mod Seçilmiştir");
-
-        int enteredNumber;
-        int loopCount;
-
-        GetValidNumber(out enteredNumber);
-        GetValidNumber(out loopCount);
-
-        for (int i = 0; i < loopCount; i++)
-        {
-            Console.WriteLine($"Girdiğiniz Sayı: {enteredNumber}");
-        }
-
+        CustomAlgorithm();
         break;
     case 1:
-        PrintStars(default(int));
+        PrintStars();
         break;
     default:
         Console.WriteLine("Henüz bu mod geliştirilmemiştir.");
@@ -48,12 +36,26 @@ void GetValidNumber(out int number)
     while (!enteredText.Equals("EXIT")); //string string karşılaştırması bütük küçük harf duyarlı
 }
 
+void CustomAlgorithm()
+{
+    int enteredNumber;
+    int loopCount;
+
+    GetValidNumber(out enteredNumber);
+    GetValidNumber(out loopCount);
+
+    for (int i = 0; i < loopCount; i++)
+    {
+        Console.WriteLine($"Girdiğiniz Sayı: {enteredNumber}");
+    }
+}
 
 /// <summary>
 /// This method should print star stairs
 /// </summary>
-void PrintStars(int starCount)
+void PrintStars()
 {
+    int starCount;
     Console.WriteLine("Yıldız Basamağı İçin");
     GetValidNumber(out starCount);
 
@@ -65,5 +67,4 @@ void PrintStars(int starCount)
         }
         Console.WriteLine();
     }
-
 }
