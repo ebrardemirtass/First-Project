@@ -10,6 +10,9 @@ switch (modeNumber)
     case 1:
         PrintStars();
         break;
+    case 2:
+        DivideByThree();
+        break;
     default:
         Console.WriteLine("Henüz bu mod geliştirilmemiştir.");
         break;
