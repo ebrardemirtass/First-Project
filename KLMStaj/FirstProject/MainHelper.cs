@@ -1,9 +1,8 @@
-﻿
-namespace FirstProject
+﻿namespace FirstProject
 {
-    internal class MainHelper
+    public class MainHelper
     {
-        public static void GetValidNumber(out int number)
+        public void GetValidNumber(out int number)
         {
             string? enteredText; // nullable
 

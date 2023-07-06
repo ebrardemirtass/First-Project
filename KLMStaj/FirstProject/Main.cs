@@ -1,8 +1,11 @@
 using FirstProject;
 
 int modeNumber;
+
+MainHelper helper = new MainHelper();
+
 Console.WriteLine("Çalışma Modu Seçimi İçin");
-MainHelper.GetValidNumber(out modeNumber);
+helper.GetValidNumber(out modeNumber);
 
 switch (modeNumber)
 {
@@ -24,8 +27,8 @@ void CustomAlgorithm()
     int enteredNumber;
     int loopCount;
 
-    MainHelper.GetValidNumber(out enteredNumber);
-    MainHelper.GetValidNumber(out loopCount);
+    helper.GetValidNumber(out enteredNumber);
+    helper.GetValidNumber(out loopCount);
 
     for (int i = 0; i < loopCount; i++)
     {
@@ -40,7 +43,7 @@ void PrintStars()
 {
     int starCount;
     Console.WriteLine("Yıldız Basamağı İçin");
-    MainHelper.GetValidNumber(out starCount);
+    helper.GetValidNumber(out starCount);
 
     for (int i = 0; i <= starCount; i++)
     {
@@ -60,7 +63,7 @@ void DivideByThree()
     int limit;
     List<int> numbers = new List<int>();
     Console.WriteLine("Kaça kadar bölünecek ?");
-    MainHelper.GetValidNumber(out limit);
+    helper.GetValidNumber(out limit);
     for (int i = 1; i <= limit; i++)
     {
         if (i % 3 == 0)
