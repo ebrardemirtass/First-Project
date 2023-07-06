@@ -68,3 +68,14 @@ void PrintStars()
         Console.WriteLine();
     }
 }
+void DivideByThree()
+{
+    int limit;
+    Console.WriteLine("Kaça kadar bölünecek ?");
+    GetValidNumber(out limit);
+    for (int i = 0; i <= limit; i++)
+    {
+        if (i % 3 == 0)
+            Console.WriteLine(i);
+    }
+}
