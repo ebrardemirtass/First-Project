@@ -8,8 +8,10 @@
         {
             int enteredNumber;
             int loopCount;
-            helper.GetValidNumber(out enteredNumber);
-            helper.GetValidNumber(out loopCount);
+            string numberReasonText = "Sayı Giriniz: ";
+            helper.GetValidNumber(out enteredNumber, numberReasonText);
+            numberReasonText = "Tekrar Etme Sayısı Giriniz: ";
+            helper.GetValidNumber(out loopCount, numberReasonText);
 
             for (int i = 0; i < loopCount; i++)
             {
@@ -23,8 +25,8 @@
         public void PrintStars()
         {
             int starCount;
-            Console.WriteLine("Yıldız Basamağı İçin");
-            helper.GetValidNumber(out starCount);
+            string numberReasonText = "Yıldız Basamak Sayısı Giriniz: ";
+            helper.GetValidNumber(out starCount, numberReasonText);
 
             for (int i = 0; i <= starCount; i++)
             {
@@ -43,8 +45,8 @@
         {
             int limit;
             List<int> numbers = new List<int>();
-            Console.WriteLine("Kaça kadar bölünecek ?");
-            helper.GetValidNumber(out limit);
+            string numberReasonText = "Kaça Kadar Bölünecek Sayı Giriniz: ";
+            helper.GetValidNumber(out limit,numberReasonText);
             for (int i = 1; i <= limit; i++)
             {
                 if (i % 3 == 0)

@@ -5,8 +5,9 @@ int modeNumber;
 MainHelper mainHelper = new MainHelper();
 AlgorithmHelper algorithmHelper = new AlgorithmHelper();
 
-Console.WriteLine("Çalışma Modu Seçimi İçin");
-mainHelper.GetValidNumber(out modeNumber);
+string numberReasonText = "Lütfen Çalışma Modu Numarası Giriniz:";
+
+mainHelper.GetValidNumber(out modeNumber, numberReasonText);
 
 switch (modeNumber)
 {
