@@ -24,7 +24,7 @@
         public void PrintStars()
         {
             int starCount;
-        
+
             helper.GetValidNumber(out starCount, "Yıldız Basamak Sayısı Giriniz: ");
 
             for (int i = 0; i <= starCount; i++)
@@ -44,7 +44,7 @@
         {
             int limit;
             List<int> numbers = new List<int>();
-      
+
             helper.GetValidNumber(out limit, "Kaça Kadar Bölünecek Sayı Giriniz: ");
             for (int i = 1; i <= limit; i++)
             {

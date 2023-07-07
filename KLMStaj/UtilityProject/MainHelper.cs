@@ -3,7 +3,7 @@
 
     public class MainHelper
     {
-        public void GetValidNumber(out int number,string numberReasonText)
+        public void GetValidNumber(out int number, string numberReasonText)
         {
             string? enteredText; // nullable
 

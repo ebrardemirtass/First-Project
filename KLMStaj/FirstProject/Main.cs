@@ -5,7 +5,7 @@ int modeNumber;
 MainHelper mainHelper = new MainHelper();
 AlgorithmHelper algorithmHelper = new AlgorithmHelper();
 
-mainHelper.GetValidNumber(out modeNumber," Lütfen Çalışma Modu Numarası Giriniz: ");
+mainHelper.GetValidNumber(out modeNumber, " Lütfen Çalışma Modu Numarası Giriniz: ");
 
 switch (modeNumber)
 {
