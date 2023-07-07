@@ -1,5 +1,6 @@
-﻿namespace FirstProject
+﻿namespace UtilityProject
 {
+
     public class MainHelper
     {
         public void GetValidNumber(out int number)
