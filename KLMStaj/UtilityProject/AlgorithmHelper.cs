@@ -8,10 +8,9 @@
         {
             int enteredNumber;
             int loopCount;
-            string numberReasonText = "Sayı Giriniz: ";
-            helper.GetValidNumber(out enteredNumber, numberReasonText);
-            numberReasonText = "Tekrar Etme Sayısı Giriniz: ";
-            helper.GetValidNumber(out loopCount, numberReasonText);
+
+            helper.GetValidNumber(out enteredNumber, "Sayı Giriniz: ");
+            helper.GetValidNumber(out loopCount, "Tekrar Etme Sayısı Giriniz: ");
 
             for (int i = 0; i < loopCount; i++)
             {
@@ -25,8 +24,8 @@
         public void PrintStars()
         {
             int starCount;
-            string numberReasonText = "Yıldız Basamak Sayısı Giriniz: ";
-            helper.GetValidNumber(out starCount, numberReasonText);
+        
+            helper.GetValidNumber(out starCount, "Yıldız Basamak Sayısı Giriniz: ");
 
             for (int i = 0; i <= starCount; i++)
             {
@@ -45,8 +44,8 @@
         {
             int limit;
             List<int> numbers = new List<int>();
-            string numberReasonText = "Kaça Kadar Bölünecek Sayı Giriniz: ";
-            helper.GetValidNumber(out limit,numberReasonText);
+      
+            helper.GetValidNumber(out limit, "Kaça Kadar Bölünecek Sayı Giriniz: ");
             for (int i = 1; i <= limit; i++)
             {
                 if (i % 3 == 0)
