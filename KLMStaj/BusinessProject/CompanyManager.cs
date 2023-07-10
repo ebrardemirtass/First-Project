@@ -7,7 +7,11 @@ namespace BusinessProject
         public Company CreateCompany(string name)
         {
             Company company = new Company();
+            DateTimeHelper dateTimeHelper = new DateTimeHelper();
             company.Name = name;
+            company.FoundationDate = dateTimeHelper.GenerateRandomDate();
+            Company Id = new Company();
+            Console.WriteLine($"{company.Id} - {company.Name} - {company.FoundationDate}");
 
             return company;
 

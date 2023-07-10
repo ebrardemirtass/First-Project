@@ -2,7 +2,7 @@
 {
     public class Company
     {
-        public void Construction()
+        public Company()
         {
             Id = Guid.NewGuid();
         }
