@@ -18,6 +18,9 @@ switch (modeNumber)
     case 2:
         algorithmHelper.DivideByThree();
         break;
+    case 3:
+        algorithmHelper.CreateCompany();
+        break;
     default:
         Console.WriteLine("Henüz bu mod geliştirilmemiştir.");
         break;

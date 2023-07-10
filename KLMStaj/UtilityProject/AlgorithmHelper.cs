@@ -1,4 +1,6 @@
-﻿namespace UtilityProject
+﻿using ModelProject;
+
+namespace UtilityProject
 {
     public class AlgorithmHelper
     {
@@ -56,6 +58,31 @@
             }
             int count = numbers.Count();
             Console.WriteLine($"Girdiğiniz {limit} sayısına kadar 3 e bölünen toplam {count} sayı bulunmaktadır.");
+        }
+        public void CreateCompany()
+        {
+            Console.WriteLine("Lütfen geçerli bir metin dosyasının yolunu girin:");
+            string filePath = Console.ReadLine();
+
+            if (File.Exists(filePath))
+            {
+                FileHelper fileHelper = new FileHelper();
+                string fileContent = fileHelper.ReadLines(filePath);
+                string[] lines = fileContent.Split(new[] { Environment.NewLine }, StringSplitOptions.RemoveEmptyEntries);
+
+                DateTimeHelper dateTimeHelper = new DateTimeHelper();
+                foreach (string line in lines)
+                {
+                    Company company = new Company();
+                    company.Name = line.Trim();
+                    company.Construction();
+                    company.FoundationDate = dateTimeHelper.GenerateRandomDate();
+
+                    Console.WriteLine($"{company.Id} - {company.Name} - {company.FoundationDate}");
+                }
+            }
+            else { Console.WriteLine("Hatalı Dosya Yolu Girişi!"); }
+
         }
     }
 }
