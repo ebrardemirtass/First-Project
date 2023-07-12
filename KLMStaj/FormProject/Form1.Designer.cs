@@ -31,10 +31,9 @@
             components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             button1 = new Button();
+            form1BindingSource = new BindingSource(components);
             textBox1 = new TextBox();
-            label1 = new Label();
-            menuStrip1 = new MenuStrip();
-            toolTip1 = new ToolTip(components);
+            ((System.ComponentModel.ISupportInitialize)form1BindingSource).BeginInit();
             SuspendLayout();
             // 
             // button1
@@ -52,37 +51,17 @@
             button1.UseWaitCursor = true;
             button1.Click += button1_Click;
             // 
+            // form1BindingSource
+            // 
+            form1BindingSource.DataSource = typeof(Form1);
+            // 
             // textBox1
             // 
-            textBox1.Location = new Point(242, 255);
-            textBox1.Margin = new Padding(3, 4, 3, 4);
+            textBox1.Location = new Point(217, 253);
+            textBox1.Multiline = true;
             textBox1.Name = "textBox1";
-            textBox1.Size = new Size(334, 27);
+            textBox1.Size = new Size(362, 55);
             textBox1.TabIndex = 1;
-            // 
-            // label1
-            // 
-            label1.AutoSize = true;
-            label1.BackColor = SystemColors.ScrollBar;
-            label1.BorderStyle = BorderStyle.FixedSingle;
-            label1.Font = new Font("Wide Latin", 18F, FontStyle.Regular, GraphicsUnit.Point);
-            label1.ForeColor = Color.FromArgb(0, 0, 64);
-            label1.Location = new Point(284, 192);
-            label1.Name = "label1";
-            label1.Size = new Size(269, 39);
-            label1.TabIndex = 2;
-            label1.Text = "GOOGLE";
-            label1.Click += label1_Click;
-            // 
-            // menuStrip1
-            // 
-            menuStrip1.ImageScalingSize = new Size(20, 20);
-            menuStrip1.Location = new Point(0, 0);
-            menuStrip1.Name = "menuStrip1";
-            menuStrip1.Padding = new Padding(7, 3, 0, 3);
-            menuStrip1.Size = new Size(914, 24);
-            menuStrip1.TabIndex = 3;
-            menuStrip1.Text = "menuStrip1";
             // 
             // Form1
             // 
@@ -91,15 +70,14 @@
             BackColor = Color.MintCream;
             BackgroundImage = (Image)resources.GetObject("$this.BackgroundImage");
             ClientSize = new Size(914, 502);
-            Controls.Add(label1);
             Controls.Add(textBox1);
             Controls.Add(button1);
-            Controls.Add(menuStrip1);
             ForeColor = SystemColors.ActiveCaptionText;
-            MainMenuStrip = menuStrip1;
             Margin = new Padding(3, 4, 3, 4);
             Name = "Form1";
             Text = "Form1";
+            Load += Form1_Load;
+            ((System.ComponentModel.ISupportInitialize)form1BindingSource).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -107,9 +85,7 @@
         #endregion
 
         private Button button1;
+        private BindingSource form1BindingSource;
         private TextBox textBox1;
-        private Label label1;
-        private MenuStrip menuStrip1;
-        private ToolTip toolTip1;
     }
 }
