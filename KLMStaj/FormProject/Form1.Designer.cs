@@ -33,6 +33,7 @@
             button1 = new Button();
             form1BindingSource = new BindingSource(components);
             textBox1 = new TextBox();
+            comboBox1 = new ComboBox();
             ((System.ComponentModel.ISupportInitialize)form1BindingSource).BeginInit();
             SuspendLayout();
             // 
@@ -63,6 +64,17 @@
             textBox1.Size = new Size(362, 55);
             textBox1.TabIndex = 1;
             // 
+            // comboBox1
+            // 
+            comboBox1.DropDownStyle = ComboBoxStyle.DropDownList;
+            comboBox1.FormattingEnabled = true;
+            comboBox1.Items.AddRange(new object[] { "CustomAlgorithm", "PrintStarts", "DivideByThree", "CompanyMode" });
+            comboBox1.Location = new Point(26, 93);
+            comboBox1.Name = "comboBox1";
+            comboBox1.Size = new Size(151, 28);
+            comboBox1.TabIndex = 2;
+            comboBox1.SelectedIndexChanged += comboBox1_SelectedIndexChanged_1;
+            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
@@ -70,6 +82,7 @@
             BackColor = Color.MintCream;
             BackgroundImage = (Image)resources.GetObject("$this.BackgroundImage");
             ClientSize = new Size(914, 502);
+            Controls.Add(comboBox1);
             Controls.Add(textBox1);
             Controls.Add(button1);
             ForeColor = SystemColors.ActiveCaptionText;
@@ -87,5 +100,6 @@
         private Button button1;
         private BindingSource form1BindingSource;
         private TextBox textBox1;
+        private ComboBox comboBox1;
     }
 }
