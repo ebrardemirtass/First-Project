@@ -19,7 +19,7 @@ namespace UtilityProject
                 Console.WriteLine($"Girdiğiniz Sayı: {enteredNumber}");
             }
         }
-
+        
         /// <summary>
         /// This method should print star stairs
         /// </summary>

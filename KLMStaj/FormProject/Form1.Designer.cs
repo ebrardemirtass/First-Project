@@ -40,9 +40,10 @@
             // button1
             // 
             button1.BackColor = Color.White;
+            button1.Cursor = Cursors.Hand;
             button1.Font = new Font("Nirmala UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
             button1.ForeColor = Color.OliveDrab;
-            button1.Location = new Point(599, 253);
+            button1.Location = new Point(410, 406);
             button1.Margin = new Padding(3, 4, 3, 4);
             button1.Name = "button1";
             button1.Size = new Size(86, 31);
@@ -58,20 +59,21 @@
             // 
             // textBox1
             // 
-            textBox1.Location = new Point(217, 253);
+            textBox1.Location = new Point(150, 131);
             textBox1.Multiline = true;
             textBox1.Name = "textBox1";
-            textBox1.Size = new Size(362, 55);
+            textBox1.Size = new Size(612, 268);
             textBox1.TabIndex = 1;
+            textBox1.TextChanged += textBox1_TextChanged_1;
             // 
             // comboBox1
             // 
             comboBox1.DropDownStyle = ComboBoxStyle.DropDownList;
             comboBox1.FormattingEnabled = true;
             comboBox1.Items.AddRange(new object[] { "CustomAlgorithm", "PrintStarts", "DivideByThree", "CompanyMode" });
-            comboBox1.Location = new Point(26, 93);
+            comboBox1.Location = new Point(570, 97);
             comboBox1.Name = "comboBox1";
-            comboBox1.Size = new Size(151, 28);
+            comboBox1.Size = new Size(192, 28);
             comboBox1.TabIndex = 2;
             comboBox1.SelectedIndexChanged += comboBox1_SelectedIndexChanged_1;
             // 
