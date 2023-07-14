@@ -9,7 +9,7 @@ namespace FormProject
             InitializeComponent();
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void btnProcess_Click(object sender, EventArgs e)
         {
             ComboBoxItem selectedComboBoxItem = (ComboBoxItem)cmbProcessSelect.SelectedItem;
             int selectedValue = selectedComboBoxItem.ValueMember;
@@ -18,7 +18,7 @@ namespace FormProject
 
             txtCommand.Text = result;
         }
-        private void Form1_Load(object sender, EventArgs e)
+        private void MainForm_Load(object sender, EventArgs e)
         {
             cmbProcessSelect.DisplayMember = "DisplayMember";
             cmbProcessSelect.ValueMember = "ValueMember";
@@ -111,7 +111,7 @@ namespace FormProject
             return true;
         }
 
-        private void textBox1_TextChanged_1(object sender, EventArgs e)
+        private void txtCommand_TextChanged_1(object sender, EventArgs e)
         {
 
         }

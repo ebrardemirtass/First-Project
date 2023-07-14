@@ -51,7 +51,7 @@
             btnProcess.Text = "Search";
             btnProcess.UseVisualStyleBackColor = false;
             btnProcess.UseWaitCursor = true;
-            btnProcess.Click += button1_Click;
+            btnProcess.Click += btnProcess_Click;
             // 
             // form1BindingSource
             // 
@@ -65,7 +65,7 @@
             txtCommand.ScrollBars = ScrollBars.Both;
             txtCommand.Size = new Size(612, 268);
             txtCommand.TabIndex = 1;
-            txtCommand.TextChanged += textBox1_TextChanged_1;
+            txtCommand.TextChanged += txtCommand_TextChanged_1;
             // 
             // cmbProcessSelect
             // 
@@ -92,7 +92,7 @@
             Margin = new Padding(3, 4, 3, 4);
             Name = "Form1";
             Text = "Form1";
-            Load += Form1_Load;
+            Load += MainForm_Load;
             ((System.ComponentModel.ISupportInitialize)mainFormBindingSource).EndInit();
             ResumeLayout(false);
             PerformLayout();
