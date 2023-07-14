@@ -13,7 +13,8 @@ switch (modeNumber)
         algorithmHelper.CustomAlgorithm();
         break;
     case 1:
-        algorithmHelper.PrintStars();
+        mainHelper.GetValidNumber(out int starCount, "Yıldız Basamak Sayısı Giriniz: ");
+        Console.Write(algorithmHelper.PrintStars(starCount));
         break;
     case 2:
         algorithmHelper.DivideByThree();

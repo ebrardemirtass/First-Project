@@ -1,4 +1,5 @@
 using System.Text;
+using UtilityProject;
 
 namespace FormProject
 {
@@ -14,7 +15,7 @@ namespace FormProject
             ComboBoxItem selectedComboBoxItem = (ComboBoxItem)comboBox1.SelectedItem;
             int selectedValue = selectedComboBoxItem.ValueMember;
 
-            string result = ProcessOperation(selectedValue, textBox1.Text);
+            string? result = ProcessOperation(selectedValue, textBox1.Text);
 
             textBox1.Text = result;
         }
@@ -76,9 +77,10 @@ namespace FormProject
             int selectedValue = selectedComboBoxItem.ValueMember;
         }
 
-        private string ProcessOperation(int selectedValue, string input)
+        private string? ProcessOperation(int selectedValue, string input)
         {
-            string result = "";
+            AlgorithmHelper algorithmHelper = new AlgorithmHelper();
+            string? result = null;
 
             switch (selectedValue)
             {
@@ -95,7 +97,7 @@ namespace FormProject
                 case 1:
                     if (int.TryParse(input, out int starsNumber))
                     {
-                        result = PrintStars(starsNumber);
+                        result = algorithmHelper.PrintStars(starsNumber);
                     }
                     else
                     {
@@ -149,18 +151,6 @@ namespace FormProject
             for (int i = 0; i < repeatCount; i++)
             {
                 sb.Append(number + " ");
-            }
-
-            return sb.ToString();
-        }
-
-        private string PrintStars(int number)
-        {
-            StringBuilder sb = new StringBuilder();
-
-            for (int i = 1; i <= number; i++)
-            {
-                sb.AppendLine(new string('*', i));
             }
 
             return sb.ToString();

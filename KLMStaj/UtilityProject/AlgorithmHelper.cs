@@ -19,24 +19,24 @@ namespace UtilityProject
                 Console.WriteLine($"Girdiğiniz Sayı: {enteredNumber}");
             }
         }
-        
+
         /// <summary>
         /// This method should print star stairs
         /// </summary>
-        public void PrintStars()
+        public string? PrintStars(int starCount)
         {
-            int starCount;
-
-            helper.GetValidNumber(out starCount, "Yıldız Basamak Sayısı Giriniz: ");
+            string? resultValue = null;
 
             for (int i = 0; i <= starCount; i++)
             {
                 for (int j = 0; j < i; j++)
                 {
-                    Console.Write(" * ");
+                    resultValue += " * ";
                 }
-                Console.WriteLine();
+                resultValue += Environment.NewLine;
             }
+
+            return resultValue;
         }
 
         /// <summary>
