@@ -33,24 +33,6 @@ namespace FormProject
         {
 
         }
-
-        public class ComboBoxItem
-        {
-            public string DisplayMember { get; set; }
-            public int ValueMember { get; set; }
-
-            public ComboBoxItem(string displayMember, int valueMember)
-            {
-                DisplayMember = displayMember;
-                ValueMember = valueMember;
-            }
-
-            public override string ToString()
-            {
-                return DisplayMember;
-            }
-        }
-
         private void Form1_Load(object sender, EventArgs e)
         {
             comboBox1.DisplayMember = "DisplayMember";
