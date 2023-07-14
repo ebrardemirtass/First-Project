@@ -65,7 +65,7 @@
             txtCommand.ScrollBars = ScrollBars.Both;
             txtCommand.Size = new Size(612, 268);
             txtCommand.TabIndex = 1;
-            txtCommand.TextChanged += txtCommand_TextChanged_1;
+          
             // 
             // cmbProcessSelect
             // 
@@ -76,7 +76,6 @@
             cmbProcessSelect.Name = "comboBox1";
             cmbProcessSelect.Size = new Size(192, 28);
             cmbProcessSelect.TabIndex = 2;
-            cmbProcessSelect.SelectedIndexChanged += cmbProcessSelect_SelectedIndexChanged_1;
             // 
             // MainForm
             // 
@@ -104,6 +103,6 @@
         private BindingSource mainFormBindingSource;
         private TextBox txtCommand;
         private ComboBox cmbProcessSelect;
-        private object textBox1;
+        
     }
 }

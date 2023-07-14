@@ -16,7 +16,7 @@
             return DisplayMember;
         }
 
-        private List<ComboBoxItem> GetComboBoxData()
+        public List<ComboBoxItem> GetComboBoxData()
         {
             List<ComboBoxItem> comboBoxItems = new List<ComboBoxItem>();
 

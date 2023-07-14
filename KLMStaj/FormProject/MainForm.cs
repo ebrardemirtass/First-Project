@@ -4,6 +4,9 @@ namespace FormProject
 {
     public partial class MainForm : Form
     {
+        private string displayMember;
+        private int valueMember;
+
         public MainForm()
         {
             InitializeComponent();
@@ -20,27 +23,10 @@ namespace FormProject
         }
         private void MainForm_Load(object sender, EventArgs e)
         {
+            ComboBoxItem selectedComboBoxItem = new ComboBoxItem(displayMember,valueMember);
             cmbProcessSelect.DisplayMember = "DisplayMember";
             cmbProcessSelect.ValueMember = "ValueMember";
-            cmbProcessSelect.DataSource = GetComboBoxData();
-        }
-
-        private List<ComboBoxItem> GetComboBoxData()
-        {
-            List<ComboBoxItem> comboBoxItems = new List<ComboBoxItem>();
-
-            comboBoxItems.Add(new ComboBoxItem("CustomAlgorithm", 0));
-            comboBoxItems.Add(new ComboBoxItem("PrintStarts", 1));
-            comboBoxItems.Add(new ComboBoxItem("DivideByThree", 2));
-            comboBoxItems.Add(new ComboBoxItem("CompanyMode", 3));
-
-            return comboBoxItems;
-        }
-
-        private void cmbProcessSelect_SelectedIndexChanged_1(object sender, EventArgs e)
-        {
-            ComboBoxItem selectedComboBoxItem = (ComboBoxItem)cmbProcessSelect.SelectedItem;
-            int selectedValue = selectedComboBoxItem.ValueMember;
+            cmbProcessSelect.DataSource = selectedComboBoxItem.GetComboBoxData();
         }
 
         private string? ProcessOperation(int selectedValue, string input)
@@ -111,9 +97,6 @@ namespace FormProject
             return true;
         }
 
-        private void txtCommand_TextChanged_1(object sender, EventArgs e)
-        {
-
-        }
+     
     }
 }
