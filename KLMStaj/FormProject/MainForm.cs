@@ -2,21 +2,21 @@ using UtilityProject;
 
 namespace FormProject
 {
-    public partial class Form1 : Form
+    public partial class MainForm : Form
     {
-        public Form1()
+        public MainForm()
         {
             InitializeComponent();
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
-            ComboBoxItem selectedComboBoxItem = (ComboBoxItem)comboBox1.SelectedItem;
+            ComboBoxItem selectedComboBoxItem = (ComboBoxItem)cmbProcessSelect.SelectedItem;
             int selectedValue = selectedComboBoxItem.ValueMember;
 
-            string? result = ProcessOperation(selectedValue, textBox1.Text);
+            string? result = ProcessOperation(selectedValue, txtCommand.Text);
 
-            textBox1.Text = result;
+            txtCommand.Text = result;
         }
 
         private void label1_Click(object sender, EventArgs e)
@@ -35,9 +35,9 @@ namespace FormProject
         }
         private void Form1_Load(object sender, EventArgs e)
         {
-            comboBox1.DisplayMember = "DisplayMember";
-            comboBox1.ValueMember = "ValueMember";
-            comboBox1.DataSource = GetComboBoxData();
+            cmbProcessSelect.DisplayMember = "DisplayMember";
+            cmbProcessSelect.ValueMember = "ValueMember";
+            cmbProcessSelect.DataSource = GetComboBoxData();
         }
 
         private List<ComboBoxItem> GetComboBoxData()
@@ -52,9 +52,9 @@ namespace FormProject
             return comboBoxItems;
         }
 
-        private void comboBox1_SelectedIndexChanged_1(object sender, EventArgs e)
+        private void cmbProcessSelect_SelectedIndexChanged_1(object sender, EventArgs e)
         {
-            ComboBoxItem selectedComboBoxItem = (ComboBoxItem)comboBox1.SelectedItem;
+            ComboBoxItem selectedComboBoxItem = (ComboBoxItem)cmbProcessSelect.SelectedItem;
             int selectedValue = selectedComboBoxItem.ValueMember;
         }
 
@@ -96,7 +96,7 @@ namespace FormProject
                     }
                     break;
                 case 3:
-                    string filePath = textBox1.Text;
+                    string filePath = txtCommand.Text;
                     result = algorithmHelper.CompanyMode(filePath);
                     break;
                 default:
