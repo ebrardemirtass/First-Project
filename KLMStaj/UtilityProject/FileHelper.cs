@@ -4,6 +4,7 @@
     {
         public string ReadLines(string filePath)
         {
+            string? resultValue = null;
             if (File.Exists(filePath))
             {
                 string fileContent = File.ReadAllText(filePath);
@@ -11,8 +12,8 @@
             }
             else
             {
-                Console.WriteLine("Hatalı Dosya Yolu Girişi!");
-                return string.Empty;
+                resultValue += "Hatalı Dosya Yolu Girişi!";
+                return resultValue;
             }
         }
     }

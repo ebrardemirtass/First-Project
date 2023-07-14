@@ -1,4 +1,5 @@
 ﻿using BusinessProject;
+using ModelProject;
 
 namespace UtilityProject
 {
@@ -6,18 +7,15 @@ namespace UtilityProject
     {
         MainHelper helper = new MainHelper();
 
-        public void CustomAlgorithm()
+        public string? CustomAlgorithm(int enteredNumber, int loopCount)
         {
-            int enteredNumber;
-            int loopCount;
-
-            helper.GetValidNumber(out enteredNumber, "Sayı Giriniz: ");
-            helper.GetValidNumber(out loopCount, "Tekrar Etme Sayısı Giriniz: ");
-
+            string? resultValue = null;
             for (int i = 0; i < loopCount; i++)
             {
-                Console.WriteLine($"Girdiğiniz Sayı: {enteredNumber}");
+                resultValue += $"Girdiğiniz Sayı: {enteredNumber}";
+                resultValue += Environment.NewLine;
             }
+            return resultValue;
         }
 
         /// <summary>
@@ -42,39 +40,42 @@ namespace UtilityProject
         /// <summary>
         /// This method should print multiples of three up to the entered number
         /// </summary>
-        public void DivideByThree()
+        public string? DivideByThree(int limit)
         {
-            int limit;
+            string? resultValue = null;
+
             List<int> numbers = new List<int>();
 
-            helper.GetValidNumber(out limit, "Kaça Kadar Bölünecek Sayı Giriniz: ");
             for (int i = 1; i <= limit; i++)
             {
                 if (i % 3 == 0)
                 {
-                    Console.WriteLine(i);
+                    resultValue += i;
+                    resultValue += Environment.NewLine;
                     numbers.Add(i);
                 }
             }
             int count = numbers.Count();
-            Console.WriteLine($"Girdiğiniz {limit} sayısına kadar 3 e bölünen toplam {count} sayı bulunmaktadır.");
+            resultValue += $"Girdiğiniz {limit} sayısına kadar 3 e bölünen toplam {count} sayı bulunmaktadır.";
+            return resultValue;
         }
-        public void CompanyMode()
-
+        public string? CompanyMode(string filePath)
         {
-            Console.WriteLine("Lütfen geçerli bir metin dosyasının yolunu girin:");
-            string filePath = Console.ReadLine();
             FileHelper fileHelper = new FileHelper();
             string fileContent = fileHelper.ReadLines(filePath);
             string[] lines = fileContent.Split(new[] { Environment.NewLine }, StringSplitOptions.RemoveEmptyEntries);
-
-
+            string? resultValue = null;
             foreach (string line in lines)
             {
-                CompanyManager companyManager = new CompanyManager();
-                companyManager.CreateCompany(line);
-            }
 
+                CompanyManager companyManager = new CompanyManager();
+                Company company = companyManager.CreateCompany(line);
+
+                resultValue += $"{company.Id} - {company.Name} - {company.FoundationDate}";
+                resultValue += Environment.NewLine;
+
+            }
+            return resultValue;
 
         }
     }

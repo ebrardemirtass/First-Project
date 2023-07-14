@@ -10,17 +10,21 @@ mainHelper.GetValidNumber(out modeNumber, " Lütfen Çalışma Modu Numarası Gi
 switch (modeNumber)
 {
     case 0:
-        algorithmHelper.CustomAlgorithm();
+        mainHelper.GetValidNumber(out int enteredNumber, "Tekrarlanacak Sayıyı Giriniz: ");
+        mainHelper.GetValidNumber(out int loopCount, "Tekrar Sayısı Giriniz: ");
+        Console.Write(algorithmHelper.CustomAlgorithm(enteredNumber, loopCount));
         break;
     case 1:
         mainHelper.GetValidNumber(out int starCount, "Yıldız Basamak Sayısı Giriniz: ");
         Console.Write(algorithmHelper.PrintStars(starCount));
         break;
     case 2:
-        algorithmHelper.DivideByThree();
+        mainHelper.GetValidNumber(out int limit, "Kaça kadar Bölünecek Sayı Giriniz: ");
+        Console.Write(algorithmHelper.DivideByThree(limit));
         break;
     case 3:
-        algorithmHelper.CompanyMode();
+        string filePath = Console.ReadLine();
+        algorithmHelper.CompanyMode(filePath);
         break;
     default:
         Console.WriteLine("Henüz bu mod geliştirilmemiştir.");

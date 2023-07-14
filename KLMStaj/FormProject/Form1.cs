@@ -1,4 +1,3 @@
-using System.Text;
 using UtilityProject;
 
 namespace FormProject
@@ -87,7 +86,7 @@ namespace FormProject
                 case 0:
                     if (ValidateInput(input, out int number, out int repeatCount))
                     {
-                        result = CustomAlgorithm(number, repeatCount);
+                        result = algorithmHelper.CustomAlgorithm(number, repeatCount);
                     }
                     else
                     {
@@ -107,7 +106,7 @@ namespace FormProject
                 case 2:
                     if (int.TryParse(input, out int divideNumber))
                     {
-                        result = DivideByThree(divideNumber);
+                        result = algorithmHelper.DivideByThree(divideNumber);
                     }
                     else
                     {
@@ -115,7 +114,8 @@ namespace FormProject
                     }
                     break;
                 case 3:
-                    result = CompanyMode(input);
+                    string filePath = textBox1.Text;
+                    result = algorithmHelper.CompanyMode(filePath);
                     break;
                 default:
                     break;
@@ -142,76 +142,6 @@ namespace FormProject
             }
 
             return true;
-        }
-
-        private string CustomAlgorithm(int number, int repeatCount)
-        {
-            StringBuilder sb = new StringBuilder();
-
-            for (int i = 0; i < repeatCount; i++)
-            {
-                sb.Append(number + " ");
-            }
-
-            return sb.ToString();
-        }
-
-        private string DivideByThree(int number)
-        {
-            StringBuilder sb = new StringBuilder();
-            int count = 0;
-
-            for (int i = 3; i <= number; i += 3)
-            {
-                sb.AppendLine(i.ToString());
-                count++;
-            }
-
-            sb.Insert(0, "There are " + count + " multiples of 3 up to " + number + Environment.NewLine);
-
-            return sb.ToString();
-        }
-
-        private string CompanyMode(string input)
-        {
-            string filePath = input;
-
-            if (!File.Exists(filePath))
-            {
-                return "Geçersiz dosya yolu!";
-            }
-
-            string[] companyNames = File.ReadAllLines(filePath);
-            StringBuilder sb = new StringBuilder();
-
-            foreach (string companyName in companyNames)
-            {
-                string randomDate = GetRandomDate();
-                int randomId = GetRandomId();
-
-                sb.AppendLine("Þirket Adý: " + companyName);
-                sb.AppendLine("Kuruluþ Tarihi: " + randomDate);
-                sb.AppendLine("ID: " + randomId);
-                sb.AppendLine();
-            }
-
-            return sb.ToString();
-        }
-
-        private string GetRandomDate()
-        {
-            DateTime startDate = new DateTime(2000, 1, 1);
-            Random random = new Random();
-            int range = (DateTime.Today - startDate).Days;
-            DateTime randomDate = startDate.AddDays(random.Next(range));
-
-            return randomDate.ToString("yyyy-MM-dd");
-        }
-
-        private int GetRandomId()
-        {
-            Random random = new Random();
-            return random.Next(1000, 9999);
         }
 
         private void textBox1_TextChanged_1(object sender, EventArgs e)

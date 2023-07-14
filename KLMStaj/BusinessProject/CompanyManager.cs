@@ -11,8 +11,6 @@ namespace BusinessProject
             company.Name = name;
             company.FoundationDate = dateTimeHelper.GenerateRandomDate();
             Company Id = new Company();
-            Console.WriteLine($"{company.Id} - {company.Name} - {company.FoundationDate}");
-
             return company;
 
         }
