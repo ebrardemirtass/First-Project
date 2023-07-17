@@ -34,6 +34,7 @@
             mainFormBindingSource = new BindingSource(components);
             txtCommand = new TextBox();
             cmbProcessSelect = new ComboBox();
+            txtResult = new TextBox();
             ((System.ComponentModel.ISupportInitialize)mainFormBindingSource).BeginInit();
             SuspendLayout();
             // 
@@ -43,9 +44,9 @@
             btnProcess.Cursor = Cursors.Hand;
             btnProcess.Font = new Font("Nirmala UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
             btnProcess.ForeColor = Color.OliveDrab;
-            btnProcess.Location = new Point(410, 406);
+            btnProcess.Location = new Point(418, 438);
             btnProcess.Margin = new Padding(3, 4, 3, 4);
-            btnProcess.Name = "button1";
+            btnProcess.Name = "btnProcess";
             btnProcess.Size = new Size(86, 31);
             btnProcess.TabIndex = 0;
             btnProcess.Text = "Search";
@@ -53,29 +54,36 @@
             btnProcess.UseWaitCursor = true;
             btnProcess.Click += btnProcess_Click;
             // 
-            // form1BindingSource
+            // mainFormBindingSource
             // 
             mainFormBindingSource.DataSource = typeof(MainForm);
             // 
             // txtCommand
             // 
-            txtCommand.Location = new Point(150, 131);
+            txtCommand.Location = new Point(146, 69);
             txtCommand.Multiline = true;
-            txtCommand.Name = "textBox1";
-            txtCommand.ScrollBars = ScrollBars.Both;
-            txtCommand.Size = new Size(612, 268);
+            txtCommand.Name = "txtCommand";
+            txtCommand.Size = new Size(414, 28);
             txtCommand.TabIndex = 1;
-          
             // 
             // cmbProcessSelect
             // 
             cmbProcessSelect.DropDownStyle = ComboBoxStyle.DropDownList;
             cmbProcessSelect.FormattingEnabled = true;
             cmbProcessSelect.Items.AddRange(new object[] { "CustomAlgorithm", "PrintStarts", "DivideByThree", "CompanyMode" });
-            cmbProcessSelect.Location = new Point(570, 97);
-            cmbProcessSelect.Name = "comboBox1";
+            cmbProcessSelect.Location = new Point(566, 69);
+            cmbProcessSelect.Name = "cmbProcessSelect";
             cmbProcessSelect.Size = new Size(192, 28);
             cmbProcessSelect.TabIndex = 2;
+            // 
+            // txtResult
+            // 
+            txtResult.Location = new Point(146, 103);
+            txtResult.Multiline = true;
+            txtResult.Name = "txtResult";
+            txtResult.ScrollBars = ScrollBars.Both;
+            txtResult.Size = new Size(612, 328);
+            txtResult.TabIndex = 3;
             // 
             // MainForm
             // 
@@ -84,12 +92,13 @@
             BackColor = Color.MintCream;
             BackgroundImage = (Image)resources.GetObject("$this.BackgroundImage");
             ClientSize = new Size(914, 502);
+            Controls.Add(txtResult);
             Controls.Add(cmbProcessSelect);
             Controls.Add(txtCommand);
             Controls.Add(btnProcess);
             ForeColor = SystemColors.ActiveCaptionText;
             Margin = new Padding(3, 4, 3, 4);
-            Name = "Form1";
+            Name = "MainForm";
             Text = "Form1";
             Load += MainForm_Load;
             ((System.ComponentModel.ISupportInitialize)mainFormBindingSource).EndInit();
@@ -103,6 +112,6 @@
         private BindingSource mainFormBindingSource;
         private TextBox txtCommand;
         private ComboBox cmbProcessSelect;
-        
+        private TextBox txtResult;
     }
 }

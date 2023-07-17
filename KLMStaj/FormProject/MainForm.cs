@@ -4,8 +4,6 @@ namespace FormProject
 {
     public partial class MainForm : Form
     {
-        private string displayMember;
-        private int valueMember;
 
         public MainForm()
         {
@@ -19,14 +17,14 @@ namespace FormProject
 
             string? result = ProcessOperation(selectedValue, txtCommand.Text);
 
-            txtCommand.Text = result;
+            txtResult.Text = result;
         }
         private void MainForm_Load(object sender, EventArgs e)
         {
-            ComboBoxItem selectedComboBoxItem = new ComboBoxItem(displayMember,valueMember);
+            ComboBoxItem selectedComboBoxItem = (ComboBoxItem)cmbProcessSelect.SelectedItem;
             cmbProcessSelect.DisplayMember = "DisplayMember";
             cmbProcessSelect.ValueMember = "ValueMember";
-            cmbProcessSelect.DataSource = selectedComboBoxItem.GetComboBoxData();
+            cmbProcessSelect.DataSource = ComboBoxItem.GetComboBoxData();
         }
 
         private string? ProcessOperation(int selectedValue, string input)
@@ -96,7 +94,5 @@ namespace FormProject
 
             return true;
         }
-
-     
     }
 }
