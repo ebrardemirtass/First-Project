@@ -1,9 +1,11 @@
+using ModelProject;
 using UtilityProject;
 
 namespace FormProject
 {
     public partial class MainForm : Form
     {
+        public static List<Company> companies;
 
         public MainForm()
         {
@@ -93,6 +95,12 @@ namespace FormProject
             }
 
             return true;
+        }
+
+        private void btnCreateCompany_Click(object sender, EventArgs e)
+        {
+            CompanyDetailForm companyDetailForm = new CompanyDetailForm();
+            companyDetailForm.Show();
         }
     }
 }

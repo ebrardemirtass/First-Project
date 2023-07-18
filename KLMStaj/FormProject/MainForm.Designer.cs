@@ -35,6 +35,7 @@
             txtCommand = new TextBox();
             cmbProcessSelect = new ComboBox();
             txtResult = new TextBox();
+            btnCreateCompany = new Button();
             ((System.ComponentModel.ISupportInitialize)mainFormBindingSource).BeginInit();
             SuspendLayout();
             // 
@@ -85,6 +86,18 @@
             txtResult.Size = new Size(612, 328);
             txtResult.TabIndex = 3;
             // 
+            // btnCreateCompany
+            // 
+            btnCreateCompany.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
+            btnCreateCompany.ForeColor = Color.FromArgb(0, 0, 64);
+            btnCreateCompany.Location = new Point(537, 438);
+            btnCreateCompany.Name = "btnCreateCompany";
+            btnCreateCompany.Size = new Size(221, 31);
+            btnCreateCompany.TabIndex = 4;
+            btnCreateCompany.Text = "Create Company";
+            btnCreateCompany.UseVisualStyleBackColor = true;
+            btnCreateCompany.Click += btnCreateCompany_Click;
+            // 
             // MainForm
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
@@ -92,6 +105,7 @@
             BackColor = Color.MintCream;
             BackgroundImage = (Image)resources.GetObject("$this.BackgroundImage");
             ClientSize = new Size(914, 502);
+            Controls.Add(btnCreateCompany);
             Controls.Add(txtResult);
             Controls.Add(cmbProcessSelect);
             Controls.Add(txtCommand);
@@ -113,5 +127,6 @@
         private TextBox txtCommand;
         private ComboBox cmbProcessSelect;
         private TextBox txtResult;
+        private Button btnCreateCompany;
     }
 }
