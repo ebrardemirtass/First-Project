@@ -5,8 +5,8 @@ namespace FormProject
 {
     public partial class MainForm : Form
     {
-        public static List<Company> companies;
-
+        //public static List<Company> companies;
+        public static List<Company> companies = new List<Company>();
         public MainForm()
         {
             InitializeComponent();

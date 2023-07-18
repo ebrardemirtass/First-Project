@@ -1,4 +1,5 @@
-﻿using ModelProject;
+﻿using BusinessProject;
+using ModelProject;
 
 namespace FormProject
 {
@@ -25,13 +26,12 @@ namespace FormProject
             }
             else
             {
-                List<Company> companies = new List<Company>();
-
-                companies.Add(new Company());
+                CompanyManager companyManager = new CompanyManager();
+                Company company = companyManager.CreateCompany(companyName);
+                MainForm.companies.Add(company);
 
                 this.Close();
             }
-      
         }
     }
 }
