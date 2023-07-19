@@ -29,7 +29,10 @@ namespace FormProject
                 CompanyManager companyManager = new CompanyManager();
                 Company company = companyManager.CreateCompany(companyName);
                 MainForm.companies.Add(company);
-
+                foreach (var line in MainForm.companies)
+                {
+                    MainForm.txtResult.Text = $"{company.Id} - {company.Name} - {company.FoundationDate}";
+                }
                 this.Close();
             }
         }
