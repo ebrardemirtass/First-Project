@@ -37,6 +37,7 @@
             txtResult = new TextBox();
             btnCreateCompany = new Button();
             gridResult = new DataGridView();
+            btnDeleteCompany = new Button();
             ((System.ComponentModel.ISupportInitialize)mainFormBindingSource).BeginInit();
             ((System.ComponentModel.ISupportInitialize)gridResult).BeginInit();
             SuspendLayout();
@@ -46,7 +47,7 @@
             btnProcess.BackColor = Color.White;
             btnProcess.Cursor = Cursors.Hand;
             btnProcess.Font = new Font("Nirmala UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
-            btnProcess.ForeColor = Color.OliveDrab;
+            btnProcess.ForeColor = SystemColors.ActiveCaptionText;
             btnProcess.Location = new Point(658, 69);
             btnProcess.Margin = new Padding(3, 4, 3, 4);
             btnProcess.Name = "btnProcess";
@@ -111,6 +112,18 @@
             gridResult.Size = new Size(612, 165);
             gridResult.TabIndex = 5;
             // 
+            // btnDeleteCompany
+            // 
+            btnDeleteCompany.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
+            btnDeleteCompany.ForeColor = Color.Crimson;
+            btnDeleteCompany.Location = new Point(310, 438);
+            btnDeleteCompany.Name = "btnDeleteCompany";
+            btnDeleteCompany.Size = new Size(221, 31);
+            btnDeleteCompany.TabIndex = 6;
+            btnDeleteCompany.Text = "Caption Delete Company";
+            btnDeleteCompany.UseVisualStyleBackColor = true;
+            btnDeleteCompany.Click += btnDeleteCompany_Click;
+            // 
             // MainForm
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
@@ -118,6 +131,7 @@
             BackColor = Color.MintCream;
             BackgroundImage = (Image)resources.GetObject("$this.BackgroundImage");
             ClientSize = new Size(914, 502);
+            Controls.Add(btnDeleteCompany);
             Controls.Add(gridResult);
             Controls.Add(btnCreateCompany);
             Controls.Add(txtResult);
@@ -144,5 +158,6 @@
         public TextBox txtResult;
         private Button btnCreateCompany;
         public DataGridView gridResult;
+        private Button btnDeleteCompany;
     }
 }

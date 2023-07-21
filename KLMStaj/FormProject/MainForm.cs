@@ -1,4 +1,5 @@
 using ModelProject;
+using System.Security.Cryptography.X509Certificates;
 using UtilityProject;
 
 namespace FormProject
@@ -100,6 +101,21 @@ namespace FormProject
         {
             CompanyDetailForm companyDetailForm = new CompanyDetailForm(this);
             companyDetailForm.Show();
+        }
+
+        private void btnDeleteCompany_Click(object sender, EventArgs e)
+        {
+            if (gridResult.SelectedRows.Count > 0)
+            {
+                for (int i = 0; i < gridResult.SelectedRows.Count; i++)
+                {
+                    DataGridViewRow selectedRow = gridResult.SelectedRows[i];
+                    Company selectedCompany = selectedRow.DataBoundItem as Company;
+                    companies.Remove(selectedCompany);
+                }
+                gridResult.DataSource = null;
+                gridResult.DataSource = MainForm.companies;
+            }
         }
     }
 }
