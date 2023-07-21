@@ -36,7 +36,9 @@
             cmbProcessSelect = new ComboBox();
             txtResult = new TextBox();
             btnCreateCompany = new Button();
+            gridResult = new DataGridView();
             ((System.ComponentModel.ISupportInitialize)mainFormBindingSource).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)gridResult).BeginInit();
             SuspendLayout();
             // 
             // btnProcess
@@ -45,10 +47,10 @@
             btnProcess.Cursor = Cursors.Hand;
             btnProcess.Font = new Font("Nirmala UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
             btnProcess.ForeColor = Color.OliveDrab;
-            btnProcess.Location = new Point(418, 438);
+            btnProcess.Location = new Point(658, 69);
             btnProcess.Margin = new Padding(3, 4, 3, 4);
             btnProcess.Name = "btnProcess";
-            btnProcess.Size = new Size(86, 31);
+            btnProcess.Size = new Size(100, 31);
             btnProcess.TabIndex = 0;
             btnProcess.Text = "Search";
             btnProcess.UseVisualStyleBackColor = false;
@@ -64,7 +66,7 @@
             txtCommand.Location = new Point(146, 69);
             txtCommand.Multiline = true;
             txtCommand.Name = "txtCommand";
-            txtCommand.Size = new Size(414, 28);
+            txtCommand.Size = new Size(328, 28);
             txtCommand.TabIndex = 1;
             // 
             // cmbProcessSelect
@@ -72,9 +74,9 @@
             cmbProcessSelect.DropDownStyle = ComboBoxStyle.DropDownList;
             cmbProcessSelect.FormattingEnabled = true;
             cmbProcessSelect.Items.AddRange(new object[] { "CustomAlgorithm", "PrintStarts", "DivideByThree", "CompanyMode" });
-            cmbProcessSelect.Location = new Point(566, 69);
+            cmbProcessSelect.Location = new Point(480, 69);
             cmbProcessSelect.Name = "cmbProcessSelect";
-            cmbProcessSelect.Size = new Size(192, 28);
+            cmbProcessSelect.Size = new Size(172, 28);
             cmbProcessSelect.TabIndex = 2;
             // 
             // txtResult
@@ -83,7 +85,7 @@
             txtResult.Multiline = true;
             txtResult.Name = "txtResult";
             txtResult.ScrollBars = ScrollBars.Both;
-            txtResult.Size = new Size(612, 328);
+            txtResult.Size = new Size(612, 158);
             txtResult.TabIndex = 3;
             // 
             // btnCreateCompany
@@ -98,6 +100,17 @@
             btnCreateCompany.UseVisualStyleBackColor = true;
             btnCreateCompany.Click += btnCreateCompany_Click;
             // 
+            // gridResult
+            // 
+            gridResult.BackgroundColor = Color.Thistle;
+            gridResult.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            gridResult.Location = new Point(146, 267);
+            gridResult.Name = "gridResult";
+            gridResult.RowHeadersWidth = 51;
+            gridResult.RowTemplate.Height = 29;
+            gridResult.Size = new Size(612, 165);
+            gridResult.TabIndex = 5;
+            // 
             // MainForm
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
@@ -105,6 +118,7 @@
             BackColor = Color.MintCream;
             BackgroundImage = (Image)resources.GetObject("$this.BackgroundImage");
             ClientSize = new Size(914, 502);
+            Controls.Add(gridResult);
             Controls.Add(btnCreateCompany);
             Controls.Add(txtResult);
             Controls.Add(cmbProcessSelect);
@@ -116,6 +130,7 @@
             Text = "Form1";
             Load += MainForm_Load;
             ((System.ComponentModel.ISupportInitialize)mainFormBindingSource).EndInit();
+            ((System.ComponentModel.ISupportInitialize)gridResult).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -128,5 +143,6 @@
         private ComboBox cmbProcessSelect;
         public TextBox txtResult;
         private Button btnCreateCompany;
+        public DataGridView gridResult;
     }
 }

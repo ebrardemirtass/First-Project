@@ -1,6 +1,6 @@
 ﻿using BusinessProject;
 using ModelProject;
-using System.Text;
+using System.Windows.Forms;
 
 namespace FormProject
 {
@@ -41,18 +41,10 @@ namespace FormProject
                 CompanyManager companyManager = new CompanyManager();
                 Company company = companyManager.CreateCompany(companyName);
                 MainForm.companies.Add(company);
+                _mainFormRef.gridResult.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
+                _mainFormRef.gridResult.DataSource = null; 
+                _mainFormRef.gridResult.DataSource = MainForm.companies;
 
-
-                StringBuilder resultText = new StringBuilder();
-                var query = from companyItem in MainForm.companies
-                            select companyItem;
-
-                foreach (var companyItem in query)
-                {
-                    resultText.AppendLine($"\r\n{companyItem.Id} - {companyItem.Name} - {companyItem.FoundationDate}");
-                }
-
-                _mainFormRef.txtResult.Text = resultText.ToString();
             }
             this.Close();
         }
