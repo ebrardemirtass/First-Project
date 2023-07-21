@@ -120,7 +120,7 @@
             btnDeleteCompany.Name = "btnDeleteCompany";
             btnDeleteCompany.Size = new Size(221, 31);
             btnDeleteCompany.TabIndex = 6;
-            btnDeleteCompany.Text = "Caption Delete Company";
+            btnDeleteCompany.Text = "Delete Company";
             btnDeleteCompany.UseVisualStyleBackColor = true;
             btnDeleteCompany.Click += btnDeleteCompany_Click;
             // 
