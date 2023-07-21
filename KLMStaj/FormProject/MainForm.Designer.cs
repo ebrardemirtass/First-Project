@@ -126,7 +126,7 @@
         private BindingSource mainFormBindingSource;
         private TextBox txtCommand;
         private ComboBox cmbProcessSelect;
-        public static TextBox txtResult;
+        public TextBox txtResult;
         private Button btnCreateCompany;
     }
 }

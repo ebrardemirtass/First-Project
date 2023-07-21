@@ -98,7 +98,7 @@ namespace FormProject
 
         private void btnCreateCompany_Click(object sender, EventArgs e)
         {
-            CompanyDetailForm companyDetailForm = new CompanyDetailForm();
+            CompanyDetailForm companyDetailForm = new CompanyDetailForm(this);
             companyDetailForm.Show();
         }
     }

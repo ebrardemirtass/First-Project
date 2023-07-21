@@ -6,9 +6,18 @@ namespace FormProject
 {
     public partial class CompanyDetailForm : Form
     {
-        public CompanyDetailForm()
+        private MainForm _mainFormRef;
+
+        public CompanyDetailForm(MainForm mainFormRef)
         {
             InitializeComponent();
+
+            if (mainFormRef == null)
+            {
+                throw new Exception("mainForm boş geçilemez");
+            }
+
+            _mainFormRef = mainFormRef;
         }
 
         private void btnClose_Click(object sender, EventArgs e)
@@ -43,7 +52,7 @@ namespace FormProject
                     resultText.AppendLine($"\r\n{companyItem.Id} - {companyItem.Name} - {companyItem.FoundationDate}");
                 }
 
-                MainForm.txtResult.Text = resultText.ToString();
+                _mainFormRef.txtResult.Text = resultText.ToString();
             }
             this.Close();
         }
