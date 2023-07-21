@@ -1,5 +1,6 @@
 ﻿using BusinessProject;
 using ModelProject;
+using System.Text;
 
 namespace FormProject
 {
@@ -24,16 +25,28 @@ namespace FormProject
                 txtCompanyName.Text = "Şirket adı boş olamaz. Lütfen şirket adını giriniz.";
                 return;
             }
+            else if (txtCompanyName.Text.Equals("Şirket adı boş olamaz. Lütfen şirket adını giriniz."))
+                txtCompanyName.Text = null;
             else
             {
                 CompanyManager companyManager = new CompanyManager();
                 Company company = companyManager.CreateCompany(companyName);
                 MainForm.companies.Add(company);
 
-                MainForm.txtResult.Text += $"\r\n{company.Id} - {company.Name} - {company.FoundationDate}";
 
-                this.Close();
+                StringBuilder resultText = new StringBuilder();
+                var query = from companyItem in MainForm.companies
+                            select companyItem;
+
+                foreach (var companyItem in query)
+                {
+                    resultText.AppendLine($"\r\n{companyItem.Id} - {companyItem.Name} - {companyItem.FoundationDate}");
+                }
+
+                MainForm.txtResult.Text = resultText.ToString();
             }
+            this.Close();
         }
     }
 }
+
