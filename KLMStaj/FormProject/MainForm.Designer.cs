@@ -38,6 +38,7 @@
             btnCreateCompany = new Button();
             gridResult = new DataGridView();
             btnDeleteCompany = new Button();
+            btnUpdateCompany = new Button();
             ((System.ComponentModel.ISupportInitialize)mainFormBindingSource).BeginInit();
             ((System.ComponentModel.ISupportInitialize)gridResult).BeginInit();
             SuspendLayout();
@@ -93,9 +94,9 @@
             // 
             btnCreateCompany.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
             btnCreateCompany.ForeColor = Color.FromArgb(0, 0, 64);
-            btnCreateCompany.Location = new Point(537, 438);
+            btnCreateCompany.Location = new Point(146, 438);
             btnCreateCompany.Name = "btnCreateCompany";
-            btnCreateCompany.Size = new Size(221, 31);
+            btnCreateCompany.Size = new Size(198, 31);
             btnCreateCompany.TabIndex = 4;
             btnCreateCompany.Text = "Create Company";
             btnCreateCompany.UseVisualStyleBackColor = true;
@@ -116,13 +117,25 @@
             // 
             btnDeleteCompany.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
             btnDeleteCompany.ForeColor = Color.Crimson;
-            btnDeleteCompany.Location = new Point(310, 438);
+            btnDeleteCompany.Location = new Point(560, 438);
             btnDeleteCompany.Name = "btnDeleteCompany";
-            btnDeleteCompany.Size = new Size(221, 31);
+            btnDeleteCompany.Size = new Size(198, 31);
             btnDeleteCompany.TabIndex = 6;
             btnDeleteCompany.Text = "Delete Company";
             btnDeleteCompany.UseVisualStyleBackColor = true;
             btnDeleteCompany.Click += btnDeleteCompany_Click;
+            // 
+            // btnUpdateCompany
+            // 
+            btnUpdateCompany.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
+            btnUpdateCompany.ForeColor = Color.Indigo;
+            btnUpdateCompany.Location = new Point(350, 438);
+            btnUpdateCompany.Name = "btnUpdateCompany";
+            btnUpdateCompany.Size = new Size(198, 31);
+            btnUpdateCompany.TabIndex = 7;
+            btnUpdateCompany.Text = "Update Company";
+            btnUpdateCompany.UseVisualStyleBackColor = true;
+            btnUpdateCompany.Click += btnUpdateCompany_Click;
             // 
             // MainForm
             // 
@@ -131,6 +144,7 @@
             BackColor = Color.MintCream;
             BackgroundImage = (Image)resources.GetObject("$this.BackgroundImage");
             ClientSize = new Size(914, 502);
+            Controls.Add(btnUpdateCompany);
             Controls.Add(btnDeleteCompany);
             Controls.Add(gridResult);
             Controls.Add(btnCreateCompany);
@@ -159,5 +173,6 @@
         private Button btnCreateCompany;
         public DataGridView gridResult;
         private Button btnDeleteCompany;
+        private Button btnUpdateCompany;
     }
 }

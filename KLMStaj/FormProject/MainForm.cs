@@ -117,5 +117,21 @@ namespace FormProject
                 gridResult.DataSource = MainForm.companies;
             }
         }
+
+        private void btnUpdateCompany_Click(object sender, EventArgs e)
+        {
+            if (gridResult.SelectedRows.Count > 0)
+            {
+                for (int i = 0; i < gridResult.SelectedRows.Count; i++)
+                {
+                    DataGridViewRow selectedRow = gridResult.SelectedRows[i];
+                    Company selectedCompany = selectedRow.DataBoundItem as Company;
+                    UpdateCompanyForm updateCompanyForm = new UpdateCompanyForm(this);
+                    updateCompanyForm.Show();
+                }
+                gridResult.DataSource = null;
+                gridResult.DataSource = MainForm.companies;
+            }
+        }
     }
 }
