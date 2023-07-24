@@ -1,6 +1,5 @@
-﻿using BusinessProject;
-using ModelProject;
-
+﻿using ModelProject;
+using BusinessProject;
 namespace UtilityProject
 {
     public class AlgorithmHelper

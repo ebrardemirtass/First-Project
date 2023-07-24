@@ -1,4 +1,4 @@
-namespace BusinessProject
+namespace UtilityProject
 {
     public class DateTimeHelper
     {
