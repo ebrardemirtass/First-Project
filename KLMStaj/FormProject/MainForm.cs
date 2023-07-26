@@ -1,12 +1,10 @@
 using ModelProject;
-using System.Security.Cryptography.X509Certificates;
 using UtilityProject;
 
 namespace FormProject
 {
     public partial class MainForm : Form
     {
-        public static List<Company> companies = new List<Company>();
         public MainForm()
         {
             InitializeComponent();
@@ -14,6 +12,12 @@ namespace FormProject
 
         private void btnProcess_Click(object sender, EventArgs e)
         {
+          /*  using (var dbContext = new BusinessProject.CompanyDbContext())
+            {
+                var companies = dbContext.Companies.ToList();
+                gridResult.DataSource = companies;
+            }*/
+
             ComboBoxItem selectedComboBoxItem = (ComboBoxItem)cmbProcessSelect.SelectedItem;
             int selectedValue = selectedComboBoxItem.ValueMember;
 
@@ -107,14 +111,25 @@ namespace FormProject
         {
             if (gridResult.SelectedRows.Count > 0)
             {
-                for (int i = 0; i < gridResult.SelectedRows.Count; i++)
+                using (var dbContext = new BusinessProject.CompanyDbContext())
                 {
-                    DataGridViewRow selectedRow = gridResult.SelectedRows[i];
-                    Company selectedCompany = selectedRow.DataBoundItem as Company;
-                    companies.Remove(selectedCompany);
+                    for (int i = 0; i < gridResult.SelectedRows.Count; i++)
+                    {
+                        DataGridViewRow selectedRow = gridResult.SelectedRows[i];
+                        Company selectedCompany = selectedRow.DataBoundItem as Company;
+
+                        var companyToDelete = dbContext.Companies.Find(selectedCompany.Id);
+                        if (companyToDelete != null)
+                        {
+                            dbContext.Companies.Remove(companyToDelete);
+                        }
+                    }
+
+                    dbContext.SaveChanges();
+
+                    gridResult.DataSource = null;
+                    gridResult.DataSource = dbContext.Companies.ToList();
                 }
-                gridResult.DataSource = null;
-                gridResult.DataSource = MainForm.companies;
             }
         }
 
@@ -122,15 +137,11 @@ namespace FormProject
         {
             if (gridResult.SelectedRows.Count > 0)
             {
-                for (int i = 0; i < gridResult.SelectedRows.Count; i++)
-                {
-                    DataGridViewRow selectedRow = gridResult.SelectedRows[i];
-                    Company selectedCompany = selectedRow.DataBoundItem as Company;
-                    UpdateCompanyForm updateCompanyForm = new UpdateCompanyForm(this);
-                    updateCompanyForm.Show();
-                }
-                gridResult.DataSource = null;
-                gridResult.DataSource = MainForm.companies;
+                DataGridViewRow selectedRow = gridResult.SelectedRows[0];
+                Company selectedCompany = selectedRow.DataBoundItem as Company;
+
+                UpdateCompanyForm updateCompanyForm = new UpdateCompanyForm(selectedCompany, this);
+                updateCompanyForm.Show();
             }
         }
     }

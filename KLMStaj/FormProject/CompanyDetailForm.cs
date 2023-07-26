@@ -39,10 +39,11 @@ namespace FormProject
             {
                 CompanyManager companyManager = new CompanyManager();
                 Company company = companyManager.CreateCompany(companyName);
-                MainForm.companies.Add(company);
+                CompanyDbContext dbContext = new CompanyDbContext();
+                dbContext.Companies.Add(company);
                 _mainFormRef.gridResult.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
-                _mainFormRef.gridResult.DataSource = null; 
-                _mainFormRef.gridResult.DataSource = MainForm.companies;
+                _mainFormRef.gridResult.DataSource = null;
+                _mainFormRef.gridResult.DataSource = dbContext.Companies.ToList();
 
             }
             this.Close();

@@ -4,10 +4,14 @@ namespace FormProject
 {
     public partial class UpdateCompanyForm : Form
     {
+        private Company selectedCompany;
         private MainForm _mainFormRef;
-        public UpdateCompanyForm(MainForm mainFormRef)
+        public UpdateCompanyForm(Company selectedCompany, MainForm mainFormRef)
         {
             InitializeComponent();
+
+            this.selectedCompany = selectedCompany;
+            this._mainFormRef = mainFormRef;
 
             if (mainFormRef == null)
             {
@@ -29,19 +33,29 @@ namespace FormProject
                 txtNewName.Text = null;
             else
             {
-                DataGridViewRow selectedRow = _mainFormRef.gridResult.SelectedRows[0];
-                Company selectedCompany = selectedRow.DataBoundItem as Company;
-                MainForm.companies.Remove(selectedCompany);
-                Company updatedCompany = new Company { Id = selectedCompany.Id, Name = newCompanyName, FoundationDate = newFoundationDate };
-                MainForm.companies.Add(updatedCompany);
+                using (var dbContext = new BusinessProject.CompanyDbContext())
+                {
+                    DataGridViewRow selectedRow = _mainFormRef.gridResult.SelectedRows[0];
+                    Company selectedCompany = selectedRow.DataBoundItem as Company;
 
-                _mainFormRef.gridResult.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
+                    var companyToUpdate = dbContext.Companies.Find(selectedCompany.Id);
+                    if (companyToUpdate != null)
+                    {
+                        companyToUpdate.Name = newCompanyName;
+                        companyToUpdate.FoundationDate = newFoundationDate;
 
-                _mainFormRef.gridResult.DataSource = null;
-                _mainFormRef.gridResult.DataSource = MainForm.companies;
+                        dbContext.SaveChanges();
+                    }
+
+                    _mainFormRef.gridResult.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
+                    _mainFormRef.gridResult.DataSource = null;
+                    _mainFormRef.gridResult.DataSource = dbContext.Companies.ToList();
+                }
             }
+
             this.Close();
         }
+
         private void btnCancel_Click(object sender, EventArgs e)
         {
             this.Close();

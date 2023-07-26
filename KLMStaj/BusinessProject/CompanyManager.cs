@@ -7,13 +7,20 @@ namespace BusinessProject
     {
         public Company CreateCompany(string name)
         {
-            Company company = new Company();
-            DateTimeHelper dateTimeHelper = new DateTimeHelper();
-            company.Name = name;
-            company.FoundationDate = dateTimeHelper.GenerateRandomDate();
-            Company Id = new Company();
-            return company;
+            using (var dbContext = new CompanyDbContext())
+            {
+                Company company = new Company();
+                DateTimeHelper dateTimeHelper = new DateTimeHelper();
+                company.Name = name;
+                company.FoundationDate = dateTimeHelper.GenerateRandomDate();
 
+                // Şirket nesnesini veritabanına kaydetme işlemi
+                dbContext.Companies.Add(company);
+                dbContext.SaveChanges();
+
+                return company;
+            }
         }
+
     }
 }
