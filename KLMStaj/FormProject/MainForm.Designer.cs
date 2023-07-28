@@ -39,6 +39,7 @@
             gridResult = new DataGridView();
             btnDeleteCompany = new Button();
             btnUpdateCompany = new Button();
+            btnFakeCompany = new Button();
             ((System.ComponentModel.ISupportInitialize)mainFormBindingSource).BeginInit();
             ((System.ComponentModel.ISupportInitialize)gridResult).BeginInit();
             SuspendLayout();
@@ -137,6 +138,18 @@
             btnUpdateCompany.UseVisualStyleBackColor = true;
             btnUpdateCompany.Click += btnUpdateCompany_Click;
             // 
+            // btnFakeCompany
+            // 
+            btnFakeCompany.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
+            btnFakeCompany.ForeColor = Color.MediumBlue;
+            btnFakeCompany.Location = new Point(774, 280);
+            btnFakeCompany.Name = "btnFakeCompany";
+            btnFakeCompany.Size = new Size(83, 139);
+            btnFakeCompany.TabIndex = 8;
+            btnFakeCompany.Text = "Create 100 Fake Company";
+            btnFakeCompany.UseVisualStyleBackColor = true;
+            btnFakeCompany.Click += btnFakeCompany_Click;
+            // 
             // MainForm
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
@@ -144,6 +157,7 @@
             BackColor = Color.MintCream;
             BackgroundImage = (Image)resources.GetObject("$this.BackgroundImage");
             ClientSize = new Size(914, 502);
+            Controls.Add(btnFakeCompany);
             Controls.Add(btnUpdateCompany);
             Controls.Add(btnDeleteCompany);
             Controls.Add(gridResult);
@@ -174,5 +188,6 @@
         public DataGridView gridResult;
         private Button btnDeleteCompany;
         private Button btnUpdateCompany;
+        private Button btnFakeCompany;
     }
 }

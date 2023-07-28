@@ -1,4 +1,5 @@
-using ModelProject;
+using Bogus;
+using BusinessProject;
 using UtilityProject;
 
 namespace FormProject
@@ -12,12 +13,6 @@ namespace FormProject
 
         private void btnProcess_Click(object sender, EventArgs e)
         {
-          /*  using (var dbContext = new BusinessProject.CompanyDbContext())
-            {
-                var companies = dbContext.Companies.ToList();
-                gridResult.DataSource = companies;
-            }*/
-
             ComboBoxItem selectedComboBoxItem = (ComboBoxItem)cmbProcessSelect.SelectedItem;
             int selectedValue = selectedComboBoxItem.ValueMember;
 
@@ -27,6 +22,12 @@ namespace FormProject
         }
         private void MainForm_Load(object sender, EventArgs e)
         {
+            using (var dbContext = new BusinessProject.CompanyDbContext())
+            {
+                gridResult.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
+                gridResult.DataSource = null;
+                gridResult.DataSource = dbContext.Companies.ToList();
+            }
             ComboBoxItem selectedComboBoxItem = (ComboBoxItem)cmbProcessSelect.SelectedItem;
             cmbProcessSelect.DisplayMember = "DisplayMember";
             cmbProcessSelect.ValueMember = "ValueMember";
@@ -116,7 +117,7 @@ namespace FormProject
                     for (int i = 0; i < gridResult.SelectedRows.Count; i++)
                     {
                         DataGridViewRow selectedRow = gridResult.SelectedRows[i];
-                        Company selectedCompany = selectedRow.DataBoundItem as Company;
+                        ModelProject.Company selectedCompany = selectedRow.DataBoundItem as ModelProject.Company;
 
                         var companyToDelete = dbContext.Companies.Find(selectedCompany.Id);
                         if (companyToDelete != null)
@@ -127,6 +128,7 @@ namespace FormProject
 
                     dbContext.SaveChanges();
 
+                    gridResult.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
                     gridResult.DataSource = null;
                     gridResult.DataSource = dbContext.Companies.ToList();
                 }
@@ -138,10 +140,28 @@ namespace FormProject
             if (gridResult.SelectedRows.Count > 0)
             {
                 DataGridViewRow selectedRow = gridResult.SelectedRows[0];
-                Company selectedCompany = selectedRow.DataBoundItem as Company;
+                ModelProject.Company selectedCompany = selectedRow.DataBoundItem as ModelProject.Company;
 
                 UpdateCompanyForm updateCompanyForm = new UpdateCompanyForm(selectedCompany, this);
                 updateCompanyForm.Show();
+            }
+        }
+
+        private void btnFakeCompany_Click(object sender, EventArgs e)
+        {
+            using (var dbContext = new CompanyDbContext())
+            {
+                var faker = new Faker<ModelProject.Company>()
+                    .RuleFor(x => x.Name, f => f.Company.CompanyName())
+                    .RuleFor(x => x.FoundationDate, f => f.Date.Past());
+
+                var companies = faker.Generate(100);
+
+                dbContext.Companies.AddRange(companies);
+                dbContext.SaveChanges();
+                gridResult.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
+                gridResult.DataSource = null;
+                gridResult.DataSource = dbContext.Companies.ToList();
             }
         }
     }
