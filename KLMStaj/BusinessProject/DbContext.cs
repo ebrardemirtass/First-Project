@@ -5,7 +5,7 @@ namespace BusinessProject
 {
     public class CompanyDbContext : DbContext
     {
-        public CompanyDbContext() : base("Data Source=DESKTOP-L7TBTER;Initial Catalog=KLMStajDB;Integrated Security=True")
+        public CompanyDbContext() : base("Data Source=localhost;Initial Catalog=KLMStajDB;Integrated Security=True")
         {
             Database.SetInitializer(new CreateDatabaseIfNotExists<CompanyDbContext>());
         }
