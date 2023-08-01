@@ -67,24 +67,24 @@ namespace FormProject
                         // Son 10 yýlda kurulan þirketleri göster
                         resultList =
                             (from company in dbContext.Companies.ToList()
-                                             where DateTime.Now.Year - company.FoundationDate.Year <= 10
-                                             select company).ToList();
+                             where DateTime.Now.Year - company.FoundationDate.Year <= 10
+                             select company).ToList();
                         break;
 
                     case 1:
                         // Ýsmi F ile baþlayan þirketleri göster
                         resultList =
                             (from company in dbContext.Companies.ToList()
-                                            where company.Name.StartsWith("F", StringComparison.OrdinalIgnoreCase)
-                                            select company).ToList();
+                             where company.Name.StartsWith("F", StringComparison.OrdinalIgnoreCase)
+                             select company).ToList();
                         break;
 
                     case 2:
                         // Adýnda X yada E bulunan þirketleri göster
                         resultList =
                        (from company in dbContext.Companies.ToList()
-                                            where company.Name.Contains("X", StringComparison.OrdinalIgnoreCase) || company.Name.Contains("E", StringComparison.OrdinalIgnoreCase)
-                                            select company).ToList();
+                        where company.Name.Contains("X", StringComparison.OrdinalIgnoreCase) || company.Name.Contains("E", StringComparison.OrdinalIgnoreCase)
+                        select company).ToList();
 
                         break;
 
