@@ -27,5 +27,17 @@
 
             return comboBoxItems;
         }
+
+        public static List<ComboBoxItem> GetComboBoxData2()
+        {
+            List<ComboBoxItem> comboBoxItems = new List<ComboBoxItem>();
+
+            comboBoxItems.Add(new ComboBoxItem("Son 10 yılda kurulan şirketleri göster", 0));
+            comboBoxItems.Add(new ComboBoxItem("İsmi F ile başlayan şirketleri göster", 1));
+            comboBoxItems.Add(new ComboBoxItem("Adında X yada E bulunan şirketleri göster", 2));
+
+            return comboBoxItems;
+        }
+
     }
 }

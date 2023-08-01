@@ -1,6 +1,7 @@
 using Bogus;
 using BusinessProject;
 using UtilityProject;
+using Company = ModelProject.Company;
 
 namespace FormProject
 {
@@ -9,6 +10,13 @@ namespace FormProject
         public MainForm()
         {
             InitializeComponent();
+        }
+        public void ReloadGrid()
+        {
+            var dbContext = new CompanyDbContext();
+            gridResult.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
+            gridResult.DataSource = null;
+            gridResult.DataSource = dbContext.Companies.ToList();
         }
 
         private void btnProcess_Click(object sender, EventArgs e)
@@ -20,18 +28,74 @@ namespace FormProject
 
             txtResult.Text = result;
         }
+
+        private List<Company> resultList = new List<Company>();
+        private void btnFilter_Click(object sender, EventArgs e)
+        {
+            ComboBoxItem selectedComboBoxItem2 = (ComboBoxItem)cmbLINQOperation.SelectedItem;
+            int selectedValue = selectedComboBoxItem2.ValueMember;
+
+            List<Company>? resultList = LINQOperation(selectedValue);
+
+            gridResult.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
+            gridResult.DataSource = null;
+            gridResult.DataSource = resultList.ToList();
+        }
         private void MainForm_Load(object sender, EventArgs e)
         {
             using (var dbContext = new BusinessProject.CompanyDbContext())
             {
-                gridResult.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
-                gridResult.DataSource = null;
-                gridResult.DataSource = dbContext.Companies.ToList();
+                ReloadGrid();
             }
             ComboBoxItem selectedComboBoxItem = (ComboBoxItem)cmbProcessSelect.SelectedItem;
             cmbProcessSelect.DisplayMember = "DisplayMember";
             cmbProcessSelect.ValueMember = "ValueMember";
             cmbProcessSelect.DataSource = ComboBoxItem.GetComboBoxData();
+
+            ComboBoxItem selectedComboBoxItem2 = (ComboBoxItem)cmbLINQOperation.SelectedItem;
+            cmbLINQOperation.DisplayMember = "DisplayMember";
+            cmbLINQOperation.ValueMember = "ValueMember";
+            cmbLINQOperation.DataSource = ComboBoxItem.GetComboBoxData2();
+        }
+        private List<Company> LINQOperation(int selectedValue)
+        {
+            using (var dbContext = new CompanyDbContext())
+            {
+                switch (selectedValue)
+                {
+                    case 0:
+                        // Son 10 yýlda kurulan þirketleri göster
+                        resultList =
+                            (from company in dbContext.Companies.ToList()
+                                             where DateTime.Now.Year - company.FoundationDate.Year <= 10
+                                             select company).ToList();
+                        break;
+
+                    case 1:
+                        // Ýsmi F ile baþlayan þirketleri göster
+                        resultList =
+                            (from company in dbContext.Companies.ToList()
+                                            where company.Name.StartsWith("F", StringComparison.OrdinalIgnoreCase)
+                                            select company).ToList();
+                        break;
+
+                    case 2:
+                        // Adýnda X yada E bulunan þirketleri göster
+                        resultList =
+                       (from company in dbContext.Companies.ToList()
+                                            where company.Name.Contains("X", StringComparison.OrdinalIgnoreCase) || company.Name.Contains("E", StringComparison.OrdinalIgnoreCase)
+                                            select company).ToList();
+
+                        break;
+
+
+                    default:
+                        break;
+
+                }
+
+                return resultList;
+            }
         }
 
         private string? ProcessOperation(int selectedValue, string input)
@@ -117,7 +181,7 @@ namespace FormProject
                     for (int i = 0; i < gridResult.SelectedRows.Count; i++)
                     {
                         DataGridViewRow selectedRow = gridResult.SelectedRows[i];
-                        ModelProject.Company selectedCompany = selectedRow.DataBoundItem as ModelProject.Company;
+                        Company selectedCompany = selectedRow.DataBoundItem as Company;
 
                         var companyToDelete = dbContext.Companies.Find(selectedCompany.Id);
                         if (companyToDelete != null)
@@ -127,10 +191,7 @@ namespace FormProject
                     }
 
                     dbContext.SaveChanges();
-
-                    gridResult.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
-                    gridResult.DataSource = null;
-                    gridResult.DataSource = dbContext.Companies.ToList();
+                    ReloadGrid();
                 }
             }
         }
@@ -140,7 +201,7 @@ namespace FormProject
             if (gridResult.SelectedRows.Count > 0)
             {
                 DataGridViewRow selectedRow = gridResult.SelectedRows[0];
-                ModelProject.Company selectedCompany = selectedRow.DataBoundItem as ModelProject.Company;
+                Company selectedCompany = selectedRow.DataBoundItem as Company;
 
                 UpdateCompanyForm updateCompanyForm = new UpdateCompanyForm(selectedCompany, this);
                 updateCompanyForm.Show();
@@ -151,7 +212,7 @@ namespace FormProject
         {
             using (var dbContext = new CompanyDbContext())
             {
-                var faker = new Faker<ModelProject.Company>()
+                var faker = new Faker<Company>()
                     .RuleFor(x => x.Name, f => f.Company.CompanyName())
                     .RuleFor(x => x.FoundationDate, f => f.Date.Past());
 
@@ -159,9 +220,7 @@ namespace FormProject
 
                 dbContext.Companies.AddRange(companies);
                 dbContext.SaveChanges();
-                gridResult.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
-                gridResult.DataSource = null;
-                gridResult.DataSource = dbContext.Companies.ToList();
+                ReloadGrid();
             }
         }
     }

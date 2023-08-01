@@ -40,6 +40,8 @@
             btnDeleteCompany = new Button();
             btnUpdateCompany = new Button();
             btnFakeCompany = new Button();
+            cmbLINQOperation = new ComboBox();
+            btnFilter = new Button();
             ((System.ComponentModel.ISupportInitialize)mainFormBindingSource).BeginInit();
             ((System.ComponentModel.ISupportInitialize)gridResult).BeginInit();
             SuspendLayout();
@@ -50,7 +52,7 @@
             btnProcess.Cursor = Cursors.Hand;
             btnProcess.Font = new Font("Nirmala UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
             btnProcess.ForeColor = SystemColors.ActiveCaptionText;
-            btnProcess.Location = new Point(658, 69);
+            btnProcess.Location = new Point(658, 25);
             btnProcess.Margin = new Padding(3, 4, 3, 4);
             btnProcess.Name = "btnProcess";
             btnProcess.Size = new Size(100, 31);
@@ -66,7 +68,7 @@
             // 
             // txtCommand
             // 
-            txtCommand.Location = new Point(146, 69);
+            txtCommand.Location = new Point(146, 25);
             txtCommand.Multiline = true;
             txtCommand.Name = "txtCommand";
             txtCommand.Size = new Size(328, 28);
@@ -77,14 +79,14 @@
             cmbProcessSelect.DropDownStyle = ComboBoxStyle.DropDownList;
             cmbProcessSelect.FormattingEnabled = true;
             cmbProcessSelect.Items.AddRange(new object[] { "CustomAlgorithm", "PrintStarts", "DivideByThree", "CompanyMode" });
-            cmbProcessSelect.Location = new Point(480, 69);
+            cmbProcessSelect.Location = new Point(480, 25);
             cmbProcessSelect.Name = "cmbProcessSelect";
             cmbProcessSelect.Size = new Size(172, 28);
             cmbProcessSelect.TabIndex = 2;
             // 
             // txtResult
             // 
-            txtResult.Location = new Point(146, 103);
+            txtResult.Location = new Point(146, 59);
             txtResult.Multiline = true;
             txtResult.Name = "txtResult";
             txtResult.ScrollBars = ScrollBars.Both;
@@ -150,6 +152,30 @@
             btnFakeCompany.UseVisualStyleBackColor = true;
             btnFakeCompany.Click += btnFakeCompany_Click;
             // 
+            // cmbLINQOperation
+            // 
+            cmbLINQOperation.FormattingEnabled = true;
+            cmbLINQOperation.Location = new Point(146, 232);
+            cmbLINQOperation.Name = "cmbLINQOperation";
+            cmbLINQOperation.Size = new Size(506, 28);
+            cmbLINQOperation.TabIndex = 9;
+            // 
+            // btnFilter
+            // 
+            btnFilter.BackColor = Color.White;
+            btnFilter.Cursor = Cursors.Hand;
+            btnFilter.Font = new Font("Nirmala UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
+            btnFilter.ForeColor = SystemColors.ActiveCaptionText;
+            btnFilter.Location = new Point(658, 229);
+            btnFilter.Margin = new Padding(3, 4, 3, 4);
+            btnFilter.Name = "btnFilter";
+            btnFilter.Size = new Size(100, 31);
+            btnFilter.TabIndex = 10;
+            btnFilter.Text = "Filter";
+            btnFilter.UseVisualStyleBackColor = false;
+            btnFilter.UseWaitCursor = true;
+            btnFilter.Click += btnFilter_Click;
+            // 
             // MainForm
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
@@ -157,6 +183,8 @@
             BackColor = Color.MintCream;
             BackgroundImage = (Image)resources.GetObject("$this.BackgroundImage");
             ClientSize = new Size(914, 502);
+            Controls.Add(btnFilter);
+            Controls.Add(cmbLINQOperation);
             Controls.Add(btnFakeCompany);
             Controls.Add(btnUpdateCompany);
             Controls.Add(btnDeleteCompany);
@@ -189,5 +217,7 @@
         private Button btnDeleteCompany;
         private Button btnUpdateCompany;
         private Button btnFakeCompany;
+        private ComboBox cmbLINQOperation;
+        private Button btnFilter;
     }
 }
