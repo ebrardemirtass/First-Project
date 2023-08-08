@@ -1,6 +1,6 @@
 ﻿namespace FormProject
 {
-    internal class ComboBoxItem
+    public class ComboBoxItem
     {
         public string DisplayMember { get; set; }
         public int ValueMember { get; set; }

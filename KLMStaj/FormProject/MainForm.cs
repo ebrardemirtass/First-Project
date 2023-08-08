@@ -57,7 +57,7 @@ namespace FormProject
             cmbLINQOperation.ValueMember = "ValueMember";
             cmbLINQOperation.DataSource = ComboBoxItem.GetComboBoxData2();
         }
-        private List<Company> LINQOperation(int selectedValue)
+        public List<Company> LINQOperation(int selectedValue)
         {
             using (var dbContext = new CompanyDbContext())
             {
@@ -98,7 +98,7 @@ namespace FormProject
             }
         }
 
-        private string? ProcessOperation(int selectedValue, string input)
+        public string? ProcessOperation(int selectedValue, string input)
         {
             AlgorithmHelper algorithmHelper = new AlgorithmHelper();
             string? result = null;

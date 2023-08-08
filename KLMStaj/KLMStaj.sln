@@ -12,7 +12,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BusinessProject", "Business
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FormProject", "FormProject\FormProject.csproj", "{11526250-9B58-4768-8887-A5E891B14E91}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ReferenceResolver", "ReferenceResolver\ReferenceResolver.csproj", "{519EE8E3-793E-4475-8F77-61B3B05506BF}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ReferenceResolver", "ReferenceResolver\ReferenceResolver.csproj", "{519EE8E3-793E-4475-8F77-61B3B05506BF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WpfProject", "WpfProject\WpfProject.csproj", "{10976F0E-8E78-41F0-AA06-92A4CFFF5BA1}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -44,6 +46,10 @@ Global
 		{519EE8E3-793E-4475-8F77-61B3B05506BF}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{519EE8E3-793E-4475-8F77-61B3B05506BF}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{519EE8E3-793E-4475-8F77-61B3B05506BF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{10976F0E-8E78-41F0-AA06-92A4CFFF5BA1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{10976F0E-8E78-41F0-AA06-92A4CFFF5BA1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{10976F0E-8E78-41F0-AA06-92A4CFFF5BA1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{10976F0E-8E78-41F0-AA06-92A4CFFF5BA1}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

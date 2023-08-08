@@ -1,0 +1,22 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net6.0-windows</TargetFramework>
+    <Nullable>enable</Nullable>
+    <UseWPF>true</UseWPF>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="a1.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\FormProject\FormProject.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="a1.png" />
+  </ItemGroup>
+
+</Project>
