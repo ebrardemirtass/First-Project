@@ -17,10 +17,16 @@ namespace WpfProject
     public partial class MainWindow : Window
     {
         private MainForm _mainFormRef;
-        public MainWindow(MainForm mainFormRef)
+
+        public MainWindow()
         {
             InitializeComponent();
             ReloadGrid();
+        }
+
+        public void SetMainFormRef(MainForm mainFormRef)
+        {
+            _mainFormRef = mainFormRef;
         }
 
         public void ReloadGrid()
