@@ -6,6 +6,9 @@
         xmlns:local="clr-namespace:WpfProject"
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
+    <Window.Resources>
+        <CollectionViewSource x:Key="CompanyCollectionViewSource" Source="{Binding}" />
+    </Window.Resources>
     <Grid OpacityMask="Black">
         <Grid.Background>
             <ImageBrush Stretch="None" ImageSource="/a1.png"/>
@@ -50,7 +53,7 @@
                 </TransformGroup>
             </Button.RenderTransform>
         </Button>
-        <ComboBox x:Name="cmbProcessSelect" HorizontalAlignment="Left" Height="22" Margin="337,58,0,0" VerticalAlignment="Top" Width="165" RenderTransformOrigin="0.482,0.638"/>
+        <ComboBox x:Name="cmbProcessSelect" HorizontalAlignment="Left" Height="22" Margin="337,58,0,0" VerticalAlignment="Top" Width="165" RenderTransformOrigin="0.482,0.638" />
         <ComboBox x:Name="cmbLINQOperation" HorizontalAlignment="Left" Height="22" Margin="106,201,0,0" VerticalAlignment="Top" Width="396"/>
         <TextBox x:Name="txtResult" HorizontalAlignment="Left" Height="112" Margin="106,84,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="520"/>
         <DataGrid x:Name="gridResult" AutoGenerateColumns="True" HorizontalAlignment="Left" Height="132" Margin="106,228,0,0" VerticalAlignment="Top" Width="520" d:ItemsSource="{d:SampleData ItemCount=5}" />

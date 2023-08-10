@@ -12,7 +12,11 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\FormProject\FormProject.csproj" />
+    <PackageReference Include="Bogus" Version="34.0.2" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\UtilityProject\UtilityProject.csproj" />
   </ItemGroup>
 
   <ItemGroup>

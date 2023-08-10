@@ -1,5 +1,6 @@
 using Bogus;
 using BusinessProject;
+using System.Buffers;
 using UtilityProject;
 using Company = ModelProject.Company;
 
@@ -21,21 +22,23 @@ namespace FormProject
 
         private void btnProcess_Click(object sender, EventArgs e)
         {
+            Operations operations= new Operations();
             ComboBoxItem selectedComboBoxItem = (ComboBoxItem)cmbProcessSelect.SelectedItem;
             int selectedValue = selectedComboBoxItem.ValueMember;
 
-            string? result = ProcessOperation(selectedValue, txtCommand.Text);
+            string? result = operations.ProcessOperation(selectedValue, txtCommand.Text);
 
             txtResult.Text = result;
         }
 
-        private List<Company> resultList = new List<Company>();
+       
         private void btnFilter_Click(object sender, EventArgs e)
         {
+            Operations operations = new Operations();
             ComboBoxItem selectedComboBoxItem2 = (ComboBoxItem)cmbLINQOperation.SelectedItem;
             int selectedValue = selectedComboBoxItem2.ValueMember;
 
-            List<Company>? resultList = LINQOperation(selectedValue);
+            List<Company>? resultList = operations.LINQOperation(selectedValue);
 
             gridResult.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
             gridResult.DataSource = null;
@@ -43,7 +46,7 @@ namespace FormProject
         }
         private void MainForm_Load(object sender, EventArgs e)
         {
-            using (var dbContext = new BusinessProject.CompanyDbContext())
+            using (var dbContext = new CompanyDbContext())
             {
                 ReloadGrid();
             }
@@ -56,114 +59,6 @@ namespace FormProject
             cmbLINQOperation.DisplayMember = "DisplayMember";
             cmbLINQOperation.ValueMember = "ValueMember";
             cmbLINQOperation.DataSource = ComboBoxItem.GetComboBoxData2();
-        }
-        public List<Company> LINQOperation(int selectedValue)
-        {
-            using (var dbContext = new CompanyDbContext())
-            {
-                switch (selectedValue)
-                {
-                    case 0:
-                        // Son 10 yýlda kurulan þirketleri göster
-                        resultList =
-                            (from company in dbContext.Companies.ToList()
-                             where DateTime.Now.Year - company.FoundationDate.Year <= 10
-                             select company).ToList();
-                        break;
-
-                    case 1:
-                        // Ýsmi F ile baþlayan þirketleri göster
-                        resultList =
-                            (from company in dbContext.Companies.ToList()
-                             where company.Name.StartsWith("F", StringComparison.OrdinalIgnoreCase)
-                             select company).ToList();
-                        break;
-
-                    case 2:
-                        // Adýnda X yada E bulunan þirketleri göster
-                        resultList =
-                       (from company in dbContext.Companies.ToList()
-                        where company.Name.Contains("X", StringComparison.OrdinalIgnoreCase) || company.Name.Contains("E", StringComparison.OrdinalIgnoreCase)
-                        select company).ToList();
-
-                        break;
-
-
-                    default:
-                        break;
-
-                }
-
-                return resultList;
-            }
-        }
-
-        public string? ProcessOperation(int selectedValue, string input)
-        {
-            AlgorithmHelper algorithmHelper = new AlgorithmHelper();
-            string? result = null;
-
-            switch (selectedValue)
-            {
-                case 0:
-                    if (ValidateInput(input, out int number, out int repeatCount))
-                    {
-                        result = algorithmHelper.CustomAlgorithm(number, repeatCount);
-                    }
-                    else
-                    {
-                        result = "CustomAlgorithm için geçersiz girdi biçimi. Beklenen biçim: [sayý] [tekrar sayýsý]";
-                    }
-                    break;
-                case 1:
-                    if (int.TryParse(input, out int starsNumber))
-                    {
-                        result = algorithmHelper.PrintStars(starsNumber);
-                    }
-                    else
-                    {
-                        result = "PrintStars için geçersiz girdi biçimi. Beklenen biçim: [sayý]";
-                    }
-                    break;
-                case 2:
-                    if (int.TryParse(input, out int divideNumber))
-                    {
-                        result = algorithmHelper.DivideByThree(divideNumber);
-                    }
-                    else
-                    {
-                        result = "DivideByThree için geçersiz girdi biçimi. Beklenen biçim: [sayý]";
-                    }
-                    break;
-                case 3:
-                    string filePath = txtCommand.Text;
-                    result = algorithmHelper.CompanyMode(filePath);
-                    break;
-                default:
-                    break;
-            }
-
-            return result;
-        }
-
-        private bool ValidateInput(string input, out int number, out int repeatCount)
-        {
-            number = 0;
-            repeatCount = 0;
-
-            string[] inputValues = input.Split(' ');
-
-            if (inputValues.Length != 2)
-            {
-                return false;
-            }
-
-            if (!int.TryParse(inputValues[0], out number) || !int.TryParse(inputValues[1], out repeatCount))
-            {
-                return false;
-            }
-
-            return true;
         }
 
         private void btnCreateCompany_Click(object sender, EventArgs e)

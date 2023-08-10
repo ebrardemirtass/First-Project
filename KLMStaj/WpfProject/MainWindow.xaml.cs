@@ -1,12 +1,11 @@
 ﻿using Bogus;
 using BusinessProject;
-using FormProject;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Windows;
-using System.Windows.Forms;
-using ComboBoxItem = FormProject.ComboBoxItem;
+using UtilityProject;
+using ComboBoxItem = UtilityProject.ComboBoxItem;
 using Company = ModelProject.Company;
 
 namespace WpfProject
@@ -16,17 +15,11 @@ namespace WpfProject
     /// </summary>
     public partial class MainWindow : Window
     {
-        private MainForm _mainFormRef;
-
         public MainWindow()
         {
             InitializeComponent();
             ReloadGrid();
-        }
-
-        public void SetMainFormRef(MainForm mainFormRef)
-        {
-            _mainFormRef = mainFormRef;
+            LoadComboBoxData();
         }
 
         public void ReloadGrid()
@@ -41,32 +34,27 @@ namespace WpfProject
 
         private void btnProcess_Click(object sender, EventArgs e)
         {
-            ComboBoxItem selectedComboBoxItem = (ComboBoxItem)cmbProcessSelect.SelectedItem;
-            int selectedValue = selectedComboBoxItem.ValueMember;
+            if (cmbProcessSelect.SelectedItem is ComboBoxItem selectedComboBoxItem)
+            {
+                Operations operations = new Operations();
 
-            string? result = _mainFormRef.ProcessOperation(selectedValue, txtCommand.Text);
+                int selectedValue = selectedComboBoxItem.ValueMember;
 
-            txtResult.Text = result;
+                string? result = operations.ProcessOperation(selectedValue, txtCommand.Text);
+
+                txtResult.Text = result;
+            }
         }
 
-        private List<Company> resultList = new List<Company>();
-
-        private void MainForm_Load(object sender, EventArgs e)
+        private void LoadComboBoxData()
         {
-            using (var dbContext = new CompanyDbContext())
-            {
-                ReloadGrid();
+            cmbProcessSelect.ItemsSource = ComboBoxItem.GetComboBoxData();
+            cmbProcessSelect.DisplayMemberPath = "DisplayMember";
+            cmbProcessSelect.SelectedValuePath = "ValueMember";
 
-                List<ComboBoxItem> processItems = ComboBoxItem.GetComboBoxData();
-                cmbProcessSelect.ItemsSource = processItems;
-                cmbProcessSelect.DisplayMemberPath = "DisplayMember";
-                cmbProcessSelect.SelectedValuePath = "ValueMember";
-
-                List<ComboBoxItem> linqOperationItems = ComboBoxItem.GetComboBoxData2();
-                cmbLINQOperation.ItemsSource = linqOperationItems;
-                cmbLINQOperation.DisplayMemberPath = "DisplayMember";
-                cmbLINQOperation.SelectedValuePath = "ValueMember";
-            }
+            cmbLINQOperation.ItemsSource = ComboBoxItem.GetComboBoxData2();
+            cmbLINQOperation.DisplayMemberPath = "DisplayMember";
+            cmbLINQOperation.SelectedValuePath = "ValueMember";
         }
 
         private void btnFakeCompany_Click(object sender, RoutedEventArgs e)
@@ -114,15 +102,15 @@ namespace WpfProject
             {
                 using (var dbContext = new CompanyDbContext())
                 {
-                    for (int i = 0; i < gridResult.SelectedItems.Count; i++)
+                    foreach (var selectedItem in gridResult.SelectedItems)
                     {
-                        DataGridViewRow selectedRow = (DataGridViewRow)gridResult.SelectedItems[i];
-                        Company selectedCompany = selectedRow.DataBoundItem as Company;
-
-                        var companyToDelete = dbContext.Companies.Find(selectedCompany.Id);
-                        if (companyToDelete != null)
+                        if (selectedItem is Company selectedCompany)
                         {
-                            dbContext.Companies.Remove(companyToDelete);
+                            var companyToDelete = dbContext.Companies.Find(selectedCompany.Id);
+                            if (companyToDelete != null)
+                            {
+                                dbContext.Companies.Remove(companyToDelete);
+                            }
                         }
                     }
 
@@ -134,22 +122,28 @@ namespace WpfProject
 
         private void btnFilter_Click(object sender, RoutedEventArgs e)
         {
-            ComboBoxItem selectedComboBoxItem2 = (ComboBoxItem)cmbLINQOperation.SelectedItem;
-            int selectedValue = selectedComboBoxItem2.ValueMember;
+            if (cmbLINQOperation.SelectedItem is ComboBoxItem selectedComboBoxItem2)
+            {
+                int selectedValue = selectedComboBoxItem2.ValueMember;
+                Operations operations = new Operations();
 
-            List<Company>? resultList = _mainFormRef.LINQOperation(selectedValue);
-            gridResult.ItemsSource = null;
-            gridResult.ItemsSource = resultList.ToList();
+                List<Company>? resultList = operations.LINQOperation(selectedValue);
+                gridResult.ItemsSource = null;
+                gridResult.ItemsSource = resultList?.ToList();
+            }
         }
 
         private void btnSearch_Click(object sender, RoutedEventArgs e)
         {
-            ComboBoxItem selectedComboBoxItem = (ComboBoxItem)cmbProcessSelect.SelectedItem;
-            int selectedValue = selectedComboBoxItem.ValueMember;
+            if (cmbProcessSelect.SelectedItem is ComboBoxItem selectedComboBoxItem)
+            {
+                Operations operations = new Operations();
 
-            string? result = _mainFormRef.ProcessOperation(selectedValue, txtCommand.Text);
+                int selectedValue = selectedComboBoxItem.ValueMember;
+                string? result = operations.ProcessOperation(selectedValue, txtCommand.Text);
 
-            txtResult.Text = result;
+                txtResult.Text = result;
+            }
         }
     }
 }

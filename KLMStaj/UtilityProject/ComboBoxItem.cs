@@ -1,4 +1,4 @@
-﻿namespace FormProject
+﻿namespace UtilityProject
 {
     public class ComboBoxItem
     {
