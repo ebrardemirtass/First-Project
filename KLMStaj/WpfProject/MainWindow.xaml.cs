@@ -75,27 +75,15 @@ namespace WpfProject
 
         private void btnCreateCompany_Click(object sender, RoutedEventArgs e)
         {
-            /*  DÜZENLENECEK!
-                 CompanyDetailForm companyDetailForm = new CompanyDetailForm(this);
-                 companyDetailForm.Show();
-            */
-
+            CompanyDetailWindow companyDetailWindow = new CompanyDetailWindow(this);
+            companyDetailWindow.Show();
         }
 
         private void btnUpdateCompany_Click(object sender, RoutedEventArgs e)
         {
-            /* DÜZENLENECEK!
-            if (gridResult.SelectedItems.Count > 0)
-            {
-                DataGridViewRow selectedRow = (DataGridViewRow)gridResult.SelectedItems[0];
-                Company selectedCompany = selectedRow.DataBoundItem as Company;
-
-                UpdateCompanyForm updateCompanyForm = new UpdateCompanyForm(selectedCompany, this);
-                updateCompanyForm.Show();
-            }
-            */
+            UpdateCompanyWindow updateCompanyWindow = new UpdateCompanyWindow(this);
+            updateCompanyWindow.Show();
         }
-
         private void btnDeleteCompany_Click(object sender, RoutedEventArgs e)
         {
             if (gridResult.SelectedItems.Count > 0)

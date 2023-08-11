@@ -23,7 +23,7 @@
                 </TransformGroup>
             </Button.RenderTransform>
         </Button>
-        <Button x:Name="btnCreateCompany" Content="Create Company" HorizontalAlignment="Left" Height="21" Margin="106,369,0,0" VerticalAlignment="Top" Width="156" RenderTransformOrigin="0.5,0.5" Click="btnCreateCompany_Click">
+        <Button x:Name="btnCreateCompany" Content="Create Company" HorizontalAlignment="Left" Height="21" Margin="106,369,0,0" VerticalAlignment="Top" Width="156" RenderTransformOrigin="0.5,0.5" Click="btnCreateCompany_Click" Background="#CCDDDDDD" FontWeight="Bold">
             <Button.RenderTransform>
                 <TransformGroup>
                     <ScaleTransform/>
@@ -33,7 +33,7 @@
                 </TransformGroup>
             </Button.RenderTransform>
         </Button>
-        <Button x:Name="btnDeleteCompany" Content="Delete Company" HorizontalAlignment="Left" Height="21" Margin="466,369,0,0" VerticalAlignment="Top" Width="159" RenderTransformOrigin="0.5,0.5" Click="btnDeleteCompany_Click">
+        <Button x:Name="btnDeleteCompany" Content="Delete Company" HorizontalAlignment="Left" Height="21" Margin="466,369,0,0" VerticalAlignment="Top" Width="159" RenderTransformOrigin="0.5,0.5" Click="btnDeleteCompany_Click" Background="#CCDDDDDD" FontWeight="Bold">
             <Button.RenderTransform>
                 <TransformGroup>
                     <ScaleTransform/>
@@ -43,7 +43,7 @@
                 </TransformGroup>
             </Button.RenderTransform>
         </Button>
-        <Button x:Name="btnFakeCompany" Content="  Create &#xD;&#xA;100 Fake &#xD;&#xA;Company" Height="123" Margin="633,232,0,0" Width="59" RenderTransformOrigin="0.5,0.5" VerticalAlignment="Top" HorizontalAlignment="Left" Click="btnFakeCompany_Click" >
+        <Button x:Name="btnFakeCompany" Content="  Create &#xD;&#xA;100 Fake &#xD;&#xA;Company" Height="123" Margin="633,232,0,0" Width="59" RenderTransformOrigin="0.5,0.5" VerticalAlignment="Top" HorizontalAlignment="Left" Click="btnFakeCompany_Click" Background="#E5CBB0FF" FontWeight="Bold" >
             <Button.RenderTransform>
                 <TransformGroup>
                     <ScaleTransform/>
@@ -53,12 +53,26 @@
                 </TransformGroup>
             </Button.RenderTransform>
         </Button>
-        <ComboBox x:Name="cmbProcessSelect" HorizontalAlignment="Left" Height="22" Margin="337,58,0,0" VerticalAlignment="Top" Width="165" RenderTransformOrigin="0.482,0.638" />
-        <ComboBox x:Name="cmbLINQOperation" HorizontalAlignment="Left" Height="22" Margin="106,201,0,0" VerticalAlignment="Top" Width="396"/>
-        <TextBox x:Name="txtResult" HorizontalAlignment="Left" Height="112" Margin="106,84,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="520"/>
-        <DataGrid x:Name="gridResult" AutoGenerateColumns="True" HorizontalAlignment="Left" Height="132" Margin="106,228,0,0" VerticalAlignment="Top" Width="520" d:ItemsSource="{d:SampleData ItemCount=5}" />
-        <TextBox x:Name="txtCommand" HorizontalAlignment="Left" Height="21" Margin="106,58,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="220"/>
-        <Button x:Name="btnUpdateCompany" Content="Update Company" HorizontalAlignment="Left" Height="21" Margin="288,369,0,0" VerticalAlignment="Top" Width="159" RenderTransformOrigin="0.5,0.5" Click="btnUpdateCompany_Click" >
+        <ComboBox x:Name="cmbProcessSelect" HorizontalAlignment="Left" Height="22" Margin="337,58,0,0" VerticalAlignment="Top" Width="165" RenderTransformOrigin="0.482,0.638" >
+            <ComboBox.Background>
+                <LinearGradientBrush EndPoint="0,1">
+                    <GradientStop Color="#FFF0F0F0"/>
+                    <GradientStop Color="#E5E5E5E5" Offset="1"/>
+                </LinearGradientBrush>
+            </ComboBox.Background>
+        </ComboBox>
+        <ComboBox x:Name="cmbLINQOperation" HorizontalAlignment="Left" Height="22" Margin="106,201,0,0" VerticalAlignment="Top" Width="396">
+            <ComboBox.Background>
+                <LinearGradientBrush EndPoint="0,1">
+                    <GradientStop Color="#FFF0F0F0"/>
+                    <GradientStop Color="#E5E5E5E5" Offset="1"/>
+                </LinearGradientBrush>
+            </ComboBox.Background>
+        </ComboBox>
+        <TextBox x:Name="txtResult" HorizontalAlignment="Left" Height="112" Margin="106,84,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="520" Background="#99FFFFFF"/>
+        <DataGrid x:Name="gridResult" AutoGenerateColumns="True" HorizontalAlignment="Left" Height="132" Margin="106,228,0,0" VerticalAlignment="Top" Width="520" d:ItemsSource="{d:SampleData ItemCount=5}" Background="#D8FFFFFF" />
+        <TextBox x:Name="txtCommand" HorizontalAlignment="Left" Height="21" Margin="106,58,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="220" Background="#B2FFFFFF"/>
+        <Button x:Name="btnUpdateCompany" Content="Update Company" HorizontalAlignment="Left" Height="21" Margin="288,369,0,0" VerticalAlignment="Top" Width="159" RenderTransformOrigin="0.5,0.5" Click="btnUpdateCompany_Click" Background="#CCDDDDDD" FontWeight="Bold" >
             <Button.RenderTransform>
                 <TransformGroup>
                     <ScaleTransform/>
@@ -68,8 +82,8 @@
                 </TransformGroup>
             </Button.RenderTransform>
         </Button>
-        <Button x:Name="btnSearch" Content="Search" HorizontalAlignment="Left" Height="21" Margin="507,58,0,0" VerticalAlignment="Top" Width="119" Click="btnSearch_Click" />
-        <Button x:Name="btnFilter" Content="Filter" HorizontalAlignment="Left" Height="21" Margin="507,201,0,0" VerticalAlignment="Top" Width="119" Click="btnFilter_Click"/>
+        <Button x:Name="btnSearch" Content="Search" HorizontalAlignment="Left" Height="21" Margin="507,58,0,0" VerticalAlignment="Top" Width="119" Click="btnSearch_Click" Background="#D8DDDDDD" FontWeight="Bold" />
+        <Button x:Name="btnFilter" Content="Filter" HorizontalAlignment="Left" Height="21" Margin="507,201,0,0" VerticalAlignment="Top" Width="119" Click="btnFilter_Click" Background="#D8DDDDDD" FontWeight="Bold"/>
 
     </Grid>
 </Window>

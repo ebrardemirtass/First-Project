@@ -1,0 +1,17 @@
+﻿<Window x:Class="WpfProject.CompanyDetailWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WpfProject"
+        mc:Ignorable="d"
+        Title="CompanyDetailWindow" Height="407" Width="615">
+    <Grid Margin="0,0,1,-5">
+        <Grid.Background>
+            <ImageBrush ImageSource="/8.png" TileMode="None"/>
+        </Grid.Background>
+        <TextBox Name ="txtCompanyName" HorizontalAlignment="Center" Height="39" Margin="0,180,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="440" Background="#CCF5EBFF"/>
+        <Button Name ="btnSave" Content="Save" HorizontalAlignment="Left" Height="24" Margin="263,233,0,0" VerticalAlignment="Top" Width="101" Click="btnSave_Click" Background="#D8DB88FF" FontWeight="Bold" Foreground="White"/>
+
+    </Grid>
+</Window>
