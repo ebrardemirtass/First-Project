@@ -22,7 +22,7 @@ namespace WpfProject
             _mainWindowRef = mainWindowRef;
         }
 
-        private void btnSave_Click(object sender, EventArgs e)
+        private void btnSave_Click(object sender, RoutedEventArgs e)
         {
             string companyName = txtCompanyName.Text;
 
